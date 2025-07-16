@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 export default function Footer() {
@@ -10,31 +11,38 @@ export default function Footer() {
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="#services-section">Services</a>
+                                        <Link href="/">Home</Link>
                                     </li>
                                     <li>
-                                        <a href="#works-section">Works</a>
+                                        <Link href="/services">Services</Link>
                                     </li>
                                     <li>
-                                        <a href="#resume-section">Resume</a>
+                                        <Link href="/projects">Project</Link>
                                     </li>
                                     <li>
-                                        <a href="#skills-section">Skills</a>
+                                        <Link href="/experience">Experience</Link>
                                     </li>
                                     <li>
-                                        <a href="#contact-section">Contact</a>
+                                        <Link href="/resume">Resume</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/skills">Skills</Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/contact">Contact</Link>
                                     </li>
                                 </ul>
                             </nav>
                         </div>
                         <div className="copy-text">
                             <p>
-                                © 2024 All rights reserved by{" "}
+                                © 2025 All rights reserved by
                                 <a
                                     href="https://www.linkedin.com/in/ahadali-webmaestro/"
                                     target="_blank"
+                                    style={{marginLeft:'4px'}}
                                 >
-                                    Ahad Ali
+                                    ΔĦΔĐ ΔŁƗ
                                 </a>
                             </p>
                         </div>

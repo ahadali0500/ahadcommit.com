@@ -7,20 +7,39 @@ import Experience from "./component/Experience";
 import Skill from "./component/Skill";
 import Contact from "./component/Contact";
 import Main from "./component/Main";
+import type { Metadata } from "next";
+import { educationExperience, workExperience } from '@/app/data/experience'
+
+export const metadata = {
+  title: {
+    default: "Ahad Ali – Full Stack Dev | DevOps Engineer & Agentic AI",
+    template: "%s | Ahad Ali"
+  },
+  description: "Experienced Full Stack Developer, DevOps Engineer & Agentic AI expert building scalable systems and AI solutions for real-world business challenges.",
+  metadataBase: new URL("https://ahadcommit.com/"),
+  openGraph: {
+    title: "Ahad Ali – Full Stack Dev | DevOps Engineer & Agentic AI",
+    description: "Experienced Full Stack Developer, DevOps Engineer & Agentic AI expert building scalable systems and AI solutions for real-world business challenges.",
+    url: "https://ahadcommit.com",
+    siteName: "Ahad Commit",
+    locale: "en_US",
+    type: "website"
+  }
+};
 
 export default function Home() {
   return (
     <>
       <Navbar></Navbar>
       <main>
-      <Main></Main>
-             <Services></Services>
-      <Project></Project>
+        <Main></Main>
+        <Services></Services>
+        <Project></Project>
 
-       <Experience></Experience>
+        <Experience educationExperience={educationExperience} workExperience={workExperience}></Experience>
         <Skill></Skill>
-       <Contact></Contact>
-     
+        <Contact></Contact>
+
       </main>
       <Footer></Footer>
     </>

@@ -1,18 +1,18 @@
 export interface ServiceType {
-    slug: string;
-    number: string;
-    title: string;
-    description: string;
-    details: string;
-  }
+  slug: string;
+  number: string;
+  title: string;
+  description: string;
+  details: string;
+}
 
-  export const services: ServiceType[] =[
-    {
-      slug: 'full-stack-web-application-development',
-      number: '01',
-      title: 'Full Stack Web Application Development',
-      description: 'Build scalable full-stack apps using React.js, Next.js, Laravel, Node.js, and PHP.',
-      details: `
+export const services: ServiceType[] = [
+  {
+    slug: 'full-stack-web-application-development',
+    number: '01',
+    title: 'Full Stack Web Application Development',
+    description: 'Build scalable full-stack apps using React.js, Next.js, Laravel, Node.js, and PHP.',
+    details: `
   ## Overview
   I build robust web applications using modern stacks such as React.js, Next.js, Laravel, Node.js, and PHP — from frontend UI to backend API and database logic.
   
@@ -33,13 +33,13 @@ export interface ServiceType {
   - Scalable and secure
   - Optimized for performance and SEO
       `,
-    },
-    {
-      slug: 'custom-admin-dashboards-cms',
-      number: '02',
-      title: 'Custom Admin Dashboards & CMS',
-      description: 'Create admin panels and CMS platforms using Laravel, React, and Bootstrap/Tailwind.',
-      details: `
+  },
+  {
+    slug: 'custom-admin-dashboards-cms',
+    number: '02',
+    title: 'Custom Admin Dashboards & CMS',
+    description: 'Create admin panels and CMS platforms using Laravel, React, and Bootstrap/Tailwind.',
+    details: `
   ## Overview
   I develop customized CMS solutions and admin dashboards that allow clients to easily manage website content, users, and functionality.
   
@@ -58,13 +58,13 @@ export interface ServiceType {
   - Role-based access
   - Mobile-friendly UI
       `,
-    },
-    {
-      slug: 'api-development-and-integration',
-      number: '03',
-      title: 'API Development & 3rd-Party Integration',
-      description: 'Develop REST APIs and integrate services like Stripe, PayPal, WhatsApp, and Google APIs.',
-      details: `
+  },
+  {
+    slug: 'api-development-and-integration',
+    number: '03',
+    title: 'API Development & 3rd-Party Integration',
+    description: 'Develop REST APIs and integrate services like Stripe, PayPal, WhatsApp, and Google APIs.',
+    details: `
   ## Overview
   I create secure RESTful APIs and integrate third-party services to extend the functionality of your application.
   
@@ -83,13 +83,13 @@ export interface ServiceType {
   - Easy maintenance
   - Clean documentation
       `,
-    },
-    {
-      slug: 'mobile-responsive-frontend-development',
-      number: '04',
-      title: 'Mobile-Responsive Frontend Development',
-      description: 'Build responsive user interfaces with React.js, Next.js, Tailwind CSS, and Bootstrap.',
-      details: `
+  },
+  {
+    slug: 'mobile-responsive-frontend-development',
+    number: '04',
+    title: 'Mobile-Responsive Frontend Development',
+    description: 'Build responsive user interfaces with React.js, Next.js, Tailwind CSS, and Bootstrap.',
+    details: `
   ## Overview
   I craft mobile-first interfaces that are responsive across all devices and screen sizes using modern frontend tools.
   
@@ -107,13 +107,13 @@ export interface ServiceType {
   - Intuitive UX
   - SEO-ready layouts
       `,
-    },
-    {
-      slug: 'real-time-applications',
-      number: '05',
-      title: 'Real-Time Applications (Chat, Notifications)',
-      description: 'Develop real-time apps like chat, alerts, or collaboration tools using WebSockets & Socket.io.',
-      details: `
+  },
+  {
+    slug: 'real-time-applications',
+    number: '05',
+    title: 'Real-Time Applications (Chat, Notifications)',
+    description: 'Develop real-time apps like chat, alerts, or collaboration tools using WebSockets & Socket.io.',
+    details: `
   ## Overview
   Build real-time features such as live chat, notifications, or collaborative tools using modern JS technologies.
   
@@ -131,13 +131,13 @@ export interface ServiceType {
   - Seamless communication
   - Efficient socket handling
       `,
-    },
-    {
-      slug: 'cross-platform-web-apps-pwa',
-      number: '06',
-      title: 'Cross-Platform Web Apps (PWA)',
-      description: 'Create Progressive Web Apps (PWAs) with Next.js and service workers for offline support.',
-      details: `
+  },
+  {
+    slug: 'cross-platform-web-apps-pwa',
+    number: '06',
+    title: 'Cross-Platform Web Apps (PWA)',
+    description: 'Create Progressive Web Apps (PWAs) with Next.js and service workers for offline support.',
+    details: `
   ## Overview
   I develop web apps that function like native apps — with offline support, caching, and installability.
   
@@ -156,13 +156,13 @@ export interface ServiceType {
   - Works offline
   - Fast and reliable
       `,
-    },
-    {
-      slug: 'devops-ci-cd-automation',
-      number: '07',
-      title: 'DevOps & CI/CD Automation',
-      description: 'Automate deployment pipelines using GitHub Actions, Docker, and NGINX.',
-      details: `
+  },
+  {
+    slug: 'devops-ci-cd-automation',
+    number: '07',
+    title: 'DevOps & CI/CD Automation',
+    description: 'Automate deployment pipelines using GitHub Actions, Docker, and NGINX.',
+    details: `
   ## Overview
   Set up end-to-end CI/CD pipelines for seamless development and production deployment.
   
@@ -181,13 +181,13 @@ export interface ServiceType {
   - Fewer human errors
   - Full version control
       `,
-    },
-    {
-      slug: 'server-and-cloud-deployment',
-      number: '08',
-      title: 'Server & Cloud Deployment (Linux, VPS, AWS)',
-      description: 'Deploy apps to VPS, EC2, Vercel, or DigitalOcean with domain, SSL, and firewall setup.',
-      details: `
+  },
+  {
+    slug: 'server-and-cloud-deployment',
+    number: '08',
+    title: 'Server & Cloud Deployment (Linux, VPS, AWS)',
+    description: 'Deploy apps to VPS, EC2, Vercel, or DigitalOcean with domain, SSL, and firewall setup.',
+    details: `
   ## Overview
   I handle full server setup and production deployment including SSL, NGINX, and cloud service configuration.
   
@@ -207,13 +207,13 @@ export interface ServiceType {
   - Stable hosting
   - Scalable infrastructure
       `,
-    },
-    {
-      slug: 'database-design-and-optimization',
-      number: '09',
-      title: 'Database Design & Optimization',
-      description: 'Design and optimize MySQL, PostgreSQL, and MongoDB schemas for high-performance apps.',
-      details: `
+  },
+  {
+    slug: 'database-design-and-optimization',
+    number: '09',
+    title: 'Database Design & Optimization',
+    description: 'Design and optimize MySQL, PostgreSQL, and MongoDB schemas for high-performance apps.',
+    details: `
   ## Overview
   Plan, design, and optimize databases to ensure data is well-structured, fast, and scalable.
   
@@ -232,5 +232,5 @@ export interface ServiceType {
   - Normalized schema
   - Secure and scalable
       `,
-    },
-  ];
+  },
+];

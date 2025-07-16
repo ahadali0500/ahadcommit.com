@@ -8,43 +8,43 @@ import Navbar from '@/app/component/Navbar';
 import Footer from '@/app/component/Footer';
 import Link from 'next/link';
 
-type Props = {
-  params: { slug: string };
-};
+// type Props = {
+//   params: { slug: string };
+// };
 
-export async function generateStaticParams() {
-  return services.map(service => ({ slug: service.slug }));
-}
+// export async function generateStaticParams() {
+//   return services.map(service => ({ slug: service.slug }));
+// }
 
-async function getServiceBySlug(slug: string) {
-  return services.find(s => s.slug === slug);
-}
+// async function getServiceBySlug(slug: string) {
+//   return services.find(s => s.slug === slug);
+// }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const service = await getServiceBySlug(params.slug);
-  return {
-    title: `${service?.title} | Ahad Ali`,
-    description: service?.description,
-  };
-}
+// export async function generateMetadata({ params }: Props): Promise<Metadata> {
+//   const service = await getServiceBySlug(params.slug);
+//   return {
+//     title: `${service?.title} | Ahad Ali`,
+//     description: service?.description,
+//   };
+// }
 
-export default async function ServiceDetailPage({ params }: Props) {
-  const service = await getServiceBySlug(params.slug);
-  const relatedServices = services.filter(s => s.slug !== params.slug).slice(0, 4);
+export default async function ServiceDetailPage({ params }: any) {
+  // const service = await getServiceBySlug(params.slug);
+  // const relatedServices = services.filter(s => s.slug !== params.slug).slice(0, 4);
 
-  if (!service) {
-    return (
-      <div className="container py-5">
-        <div className="alert alert-warning text-center">Service not found</div>
-      </div>
-    );
-  }
+  // if (!service) {
+  //   return (
+  //     <div className="container py-5">
+  //       <div className="alert alert-warning text-center">Service not found</div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
       <Navbar />
       <main>
-        <section className="hero-section d-flex align-items-center" id="intro">
+        {/* <section className="hero-section d-flex align-items-center" id="intro">
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-8">
@@ -79,7 +79,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
       <Footer />
     </>

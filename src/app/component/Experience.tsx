@@ -1,70 +1,121 @@
-import React from 'react'
+'use client';
+import { ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import Link from "next/link";
+import Head from 'next/head';
 
-export default function Experience() {
-    return (
-        <>
-         <section className="resume-section" id="resume-section">
-  <div className="container">
-    <div className="row">
-      <div className="col-md-6">
-        <div className="section-header wow fadeInUp" data-wow-delay=".3s">
-          <h2 className="section-title">
-            <i className="flaticon-recommendation" /> My Experience
-          </h2>
-        </div>
-        <div className="resume-widget">
-          <div className="resume-item wow fadeInLeft" data-wow-delay=".4s">
-            <div className="time">June 2024 - Present</div>
-            <h6>XecureSol </h6>
-            <h3 className="resume-title">Startup Founder</h3>
-            <div className="institute">
-              Building Trust and security in digital Assets Transactions
+// Define Work Experience Schema Type
+
+
+
+function ReadMoreText({ text, maxLength = 150 }: any) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  if (text.length <= maxLength) {
+    return <span>{text}</span>;
+  }
+
+  return (
+    <span>
+      {isExpanded ? text : `${text.substring(0, maxLength)}...`}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="read-more-btn"
+        style={{
+          background: 'none',
+          border: 'none',
+          color: '#4299e1',
+          cursor: 'pointer',
+          fontWeight: '500',
+          marginLeft: '8px',
+          padding: '0',
+          fontSize: 'inherit',
+          textDecoration: 'none',
+          transition: 'color 0.2s ease'
+        }}
+      >
+        {isExpanded ? 'Read Less' : 'Read More'}
+      </button>
+    </span>
+  );
+}
+
+export default function Experience({ educationExperience, workExperience }: any) {
+
+  return (
+    <>
+
+
+      <div className="services-section">
+        <div className="container">
+          <div className="section-header mt-5">
+            <h1 className="section-title">Experience & Education</h1>
+            <p className="section-subtitle">
+              My professional journey and academic background that shaped my expertise in technology and innovation.
+            </p>
+          </div>
+
+          <div className="experience-grid">
+            {/* Work Experience */}
+            <div className="experience-column">
+              <div className="column-header">
+                <div className="column-icon">💼</div>
+                <h2 className="column-title">Work Experience</h2>
+              </div>
+              <div className="timeline-container">
+                <div className="timeline-line"></div>
+                {workExperience.map((exp: any, idx: any) => (
+                  <div className="experience-item" key={idx}>
+                    <div className="experience-header">
+                      <div className="experience-info">
+                        <h4 className="experience-title">{exp.title}</h4>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', marginTop: '20px' }}>
+                          <img src={exp?.logo} alt={`${exp.company} logo`} style={{ width: '50px', height: '50px', objectFit: 'contain', borderRadius: '8px', backgroundColor: '#fff' }} />
+                          <div className="experience-company" style={{ fontWeight: 600 }}>
+                            {exp.company}
+                          </div>
+                          <Link className='mb-3' target="_blank" href={exp.link} > <ExternalLink /></Link>
+                        </div>
+                      </div>
+                      <div className="experience-period">{exp.period}</div>
+                    </div>
+                    <p className="experience-description">
+                      <ReadMoreText text={exp.description} maxLength={150} />
+                    </p>
+                    <div className="experience-location">{exp.location}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Education */}
+            <div className="experience-column">
+              <div className="column-header">
+                <div className="column-icon">🎓</div>
+                <h2 className="column-title">Education</h2>
+              </div>
+              <div className="timeline-container">
+                <div className="timeline-line"></div>
+                {educationExperience.map((edu: any, idx: any) => (
+                  <div className="experience-item" key={idx}>
+                    <div className="experience-header">
+                      <div className="experience-info">
+                        <h4 className="experience-title">{edu.title}</h4>
+                        <div className="experience-company">{edu.company}</div>
+                      </div>
+                      <div className="experience-period">{edu.period}</div>
+                    </div>
+                    <p className="experience-description">
+                      <ReadMoreText text={edu.description} maxLength={150} />
+                    </p>
+                    <div className="experience-location">{edu.location}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="resume-item wow fadeInLeft" data-wow-delay=".5s">
-            <div className="time">Jan 2023 - NOv 2024 </div>
-            <h6>Desired Technology</h6>
-            <h3 className="resume-title">Senior Web Developer</h3>
-            <div className="institute">Sahiwal Division, Punjab, Pakistan</div>
-          </div>
-          <div className="resume-item wow fadeInLeft" data-wow-delay=".4s">
-            <div className="time">Apr 2021 - Jan 2023</div>
-            <h6>TATECHWORLD </h6>
-            <h3 className="resume-title">Web Developer</h3>
-            <div className="institute">Sāhīwāl, Punjab, Pakistan · On-site</div>
-          </div>
         </div>
       </div>
-      <div className="col-md-6">
-        <div className="section-header wow fadeInUp" data-wow-delay=".4s">
-          <h2 className="section-title">
-            <i className="flaticon-graduation-cap" /> My Education
-          </h2>
-        </div>
-        <div className="resume-widget">
-          <div className="resume-item wow fadeInRight" data-wow-delay=".6s">
-            <h3 className="resume-title">Web Development Course</h3>
-            <div className="institute">TATECHWORLD</div>
-          </div>
-          <div className="resume-item wow fadeInRight" data-wow-delay=".5s">
-            <h3 className="resume-title">Software engineering</h3>
-            <div className="institute">Arid Agriculture University</div>
-          </div>
-          <div className="resume-item wow fadeInRight" data-wow-delay=".6s">
-            <h3 className="resume-title">Intermiadiate</h3>
-            <div className="institute">Punjab Group of colleges</div>
-          </div>
-          <div className="resume-item wow fadeInRight" data-wow-delay=".6s">
-            <h3 className="resume-title">Matric</h3>
-            <div className="institute">The Educators</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-        </>
-
-    )
+    </>
+  );
 }

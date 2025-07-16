@@ -1,7 +1,7 @@
 @media only screen and (max-width: 1499px) {
-	.side-navbar {
+	/* .side-navbar {
 		display: none;
-	}
+	} */
 }
 @media only screen and (min-width: 1400px) and (max-width: 1599px) {
 	.hero-section .intro_text svg text {
@@ -972,3 +972,4 @@
 		margin-top:0px
 	}
 }
+
