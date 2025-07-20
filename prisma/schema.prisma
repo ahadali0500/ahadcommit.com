@@ -1,0 +1,18 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ContactForm {
+  id        Int     @id @default(autoincrement())
+  name      String
+  email     String 
+  phone     String 
+  service   String
+  message   String  @db.Text
+  createdAt DateTime @default(now())
+}

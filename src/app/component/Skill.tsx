@@ -14,9 +14,9 @@ export default function Skill() {
         devOps: {
             title: 'DevOps',
         },
-        agenticai: {
-            title: 'Agentic AI',
-        },
+        // agenticai: {
+        //     title: 'Agentic AI',
+        // },
     };
 
     const allSkills = [
@@ -33,9 +33,11 @@ export default function Skill() {
         { name: 'Laravel', icon: 'assets/img/skill/laravel.png', category: 'backend' },
         { name: 'Node Js', icon: 'assets/img/skill/node.png', category: 'backend' },
         { name: 'Express Js', icon: 'assets/img/skill/express-js.png', category: 'backend' },
+        { name: 'Mysql', icon: 'assets/img/skill/mysql.png', category: 'backend' },
+        { name: 'PostgreSQL', icon: 'assets/img/skill/postgres.png', category: 'backend' },
 
         // Tools Skills
-        { name: 'Postman', icon: 'assets/img/skill/postman.png', category: 'tools' },
+        { name: 'Postman', icon: 'assets/img/skill/postman.png', category: 'backend' },
         { name: 'GitHub', icon: 'assets/img/skill/github.png', category: 'tools' },
         { name: 'Ajax', icon: 'assets/img/skill/ajax.png', category: 'frontend' },
         { name: 'JQuery', icon: 'assets/img/skill/jquery.png', category: 'frontend' },
@@ -44,6 +46,12 @@ export default function Skill() {
         { name: 'Docker', icon: 'assets/img/skill/docker.png', category: 'devOps' },
         { name: 'AWS S3 Bucket', icon: 'assets/img/skill/amazon-s3.png', category: 'devOps' },
         { name: 'Kubernetes', icon: 'assets/img/skill/kuburnetes.png', category: 'devOps' },
+        { name: 'AWS RDS', icon: 'assets/img/skill/awsrds.png', category: 'devOps' },
+        { name: 'Teraform', icon: 'assets/img/skill/terraform.png', category: 'devOps' },
+        { name: 'AWS', icon: 'assets/img/skill/aws.png', category: 'devOps' },
+        { name: 'Github', icon: 'assets/img/skill/github.png', category: 'devOps' },
+        { name: 'Bitbucket', icon: 'assets/img/skill/bitbucket-logo.WEBP', category: 'devOps' },
+
 
     ];
 

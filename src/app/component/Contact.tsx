@@ -1,45 +1,109 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import Navbar from '../component/Navbar';
 import Footer from '../component/Footer';
 import Main from '../component/Main';
 import Head from 'next/head';
+import toast from "react-hot-toast";
+
+interface ContactForm {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    service: string;
+    message: string;
+}
 
 export default function Contact() {
+    const [formData, setFormData] = useState<ContactForm>({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: '',
+    });
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [status, setStatus] = useState<string>('');
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        setError(null);
-        setSuccessMessage(null);
+        setStatus('');
 
-        const formData = new FormData(e.target as HTMLFormElement);
-        const formDataObject = Object.fromEntries(formData.entries());
-
-        // Example API call to submit form data (adjust this with your backend endpoint)
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
-                body: JSON.stringify(formDataObject),
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
-                setSuccessMessage("Thank you for contacting us. We will get back to you shortly.");
-            } else {
-                setError("There was an issue sending the message. Please try again.");
-            }
+            const data = await response.json();
+            toast.success('Thank you for contacting us. We will get back to you shortly.', {
+                style: {
+                    width: '100%',  // Adjust the width as needed
+                    fontSize: '12px',  // Optional: You can also adjust the font size
+                    textAlign: 'center',  // Optional: To center the text
+                },
+            });
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                service: '',
+                message: '',
+            });
         } catch (error) {
-            setError("There was an issue sending the message. Please try again.");
         } finally {
             setLoading(false);
         }
     };
+
+
+    // const handleSubmit = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     setLoading(true);
+    //     setError(null);
+    //     setSuccessMessage(null);
+
+    //     const formData = new FormData(e.target as HTMLFormElement);
+    //     const formDataObject = Object.fromEntries(formData.entries());
+
+    //     // Example API call to submit form data (adjust this with your backend endpoint)
+    //     try {
+    //         const response = await fetch('/api/contact', {
+    //             method: 'POST',
+    //             body: JSON.stringify(formDataObject),
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //         });
+
+    //         if (response.ok) {
+    //             setSuccessMessage("Thank you for contacting us. We will get back to you shortly.");
+    //         } else {
+    //             setError("There was an issue sending the message. Please try again.");
+    //         }
+    //     } catch (error) {
+    //         setError("There was an issue sending the message. Please try again.");
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
 
     // Schema for Contact Page
     const personSchema = {
@@ -48,14 +112,14 @@ export default function Contact() {
         "name": "Ahad Ali",
         "jobTitle": "Full Stack Web Developer, DevOps Engineer & Agentic AI Expert",
         "url": "http://ahadcommit.com/",
-        "image": "https://ahadcommit.com/assets/img/ahadali.jpg", 
+        "image": "https://ahadcommit.com/assets/img/ahadali.jpg",
         "sameAs": [
-            "https://www.linkedin.com/in/ahadali-webmaestro", 
-            "https://github.com/ahadali0500", 
+            "https://www.linkedin.com/in/ahadali-webmaestro",
+            "https://github.com/ahadali0500",
             "https://wa.me/+923256234131"
         ],
-        "email": "mailto:ahadali0500@gmail.com", 
-        "telephone": "+92 325 6234131", 
+        "email": "mailto:ahadali0500@gmail.com",
+        "telephone": "+92 325 6234131",
         "description": "Full Stack Web Developer with expertise in Node.js, React, Laravel, and more. Passionate about building scalable and efficient web applications."
     };
 
@@ -94,6 +158,8 @@ export default function Contact() {
                                                         type="text"
                                                         name="firstName"
                                                         id="firstName"
+                                                        value={formData.firstName}
+                                                        onChange={handleChange}
                                                         placeholder="First name"
                                                         autoComplete="off"
                                                         required
@@ -106,6 +172,8 @@ export default function Contact() {
                                                         type="text"
                                                         name="lastName"
                                                         id="lastName"
+                                                        value={formData.lastName}
+                                                        onChange={handleChange}
                                                         placeholder="Last name"
                                                         autoComplete="off"
                                                         required
@@ -118,6 +186,8 @@ export default function Contact() {
                                                         type="email"
                                                         name="email"
                                                         id="email"
+                                                        value={formData.email}
+                                                        onChange={handleChange}
                                                         placeholder="Email address"
                                                         autoComplete="off"
                                                         required
@@ -130,6 +200,8 @@ export default function Contact() {
                                                         type="tel"
                                                         name="phone"
                                                         id="phone"
+                                                        value={formData.phone}
+                                                        onChange={handleChange}
                                                         placeholder="Phone number"
                                                         autoComplete="off"
                                                         required
@@ -138,7 +210,8 @@ export default function Contact() {
                                             </div>
                                             <div className="col-12">
                                                 <div className="form_group">
-                                                    <select name="service" id="service" required>
+                                                    <select name="service" id="service" value={formData.service}
+                                                        onChange={handleChange} required>
                                                         <option value="">Choose Service</option>
                                                         <option>Full Stack Web Development</option>
                                                         <option>Frontend Development</option>
@@ -152,6 +225,8 @@ export default function Contact() {
                                                     <textarea
                                                         name="message"
                                                         id="message"
+                                                        value={formData.message}
+                                                        onChange={handleChange}
                                                         placeholder="Message"
                                                         required
                                                     />
@@ -187,7 +262,7 @@ export default function Contact() {
                                 <div className=" wow fadeInRight" data-wow-delay=".5s">
                                     <div className="text-box mt-4">
                                         <h6>Email</h6>
-                                        <a href="mailto:ahadali0500@gmail.com" className="contact-link">ahadali0500@gmail.com</a>
+                                        <a href="mailto:ahadcommit@gmail.com" className="contact-link">ahadcommit@gmail.com</a>
                                     </div>
                                 </div>
 

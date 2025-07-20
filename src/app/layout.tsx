@@ -1,5 +1,5 @@
 import HolyLoader from "holy-loader";
-
+import { Toaster  } from 'react-hot-toast';
 
 export default function RootLayout({
   children,
@@ -54,7 +54,7 @@ export default function RootLayout({
           easing="linear"
         />
         {children}
-
+        <Toaster  />
       </body>
     </html>
   );

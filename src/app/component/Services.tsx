@@ -16,57 +16,93 @@ export default function Services() {
       description: 'CI/CD, cloud deployment, containerization, and infrastructure automation',
       icon: '⚙️'
     },
-    'agentic-ai': {
-      title: 'Agentic AI',
-      description: 'AI-powered automation, chatbots, and intelligent workflow systems',
-      icon: '⊚'
-    }
+    // 'agentic-ai': {
+    //   title: 'Agentic AI',
+    //   description: 'AI-powered automation, chatbots, and intelligent workflow systems',
+    //   icon: '⊚'
+    // }
   };
 
   // Dummy data for services
   const services = [
     {
-      number: '01',
+      number: 1,
       title: 'Custom Web Development',
-      description: 'Build highly scalable and responsive web applications using modern technologies.',
+      description: 'Build custom, scalable, and responsive web applications using modern technologies like React, Next.js, and Node.js to ensure optimal performance and user experience.',
       category: 'web-development',
       slug: 'custom-web-development'
     },
     {
-      number: '02',
-      title: 'API Integration & Development',
-      description: 'Seamless integration of third-party services to improve system functionality.',
+      number: 2,
+      title: 'Real-Time Applications',
+      description: 'Develop real-time, interactive chat applications using **WebSockets** or **Socket.io**, enabling live communication for users in a secure environment. Ideal for customer support, team collaboration, or social messaging apps.',
       category: 'web-development',
-      slug: 'api-integration'
+      slug: 'real-time-chat-applications'
     },
     {
-      number: '03',
+      number: 3,
+      title: 'Progressive Web App Development',
+      description: 'Develop high-performance Progressive Web Apps (PWAs) for fast, reliable, and engaging mobile experiences without the need for installation.',
+      category: 'web-development',
+      slug: 'pwa-development'
+    },
+    {
+      number: 4,
+      title: 'Website Redesign & Optimization',
+      description: 'Revamp outdated websites with modern designs, improved functionality, and optimized load speeds to increase user engagement and SEO rankings.',
+      category: 'web-development',
+      slug: 'website-redesign'
+    },
+    {
+      number: 5,
+      title: 'Content Management System (CMS) Development',
+      description: 'Custom CMS development with WordPress, Drupal, or Joomla to empower businesses to manage and update content seamlessly.',
+      category: 'web-development',
+      slug: 'cms-development'
+    },
+    {
+      number: 6,
+      title: 'Custom API Development & Integration',
+      description: 'Create robust and scalable **RESTful APIs** and integrate third-party services to improve system functionality. Whether its integrating payment gateways, social media APIs, or other external services, we provide secure and efficient solutions.',
+      category: 'web-development',
+      slug: 'api-development-integration'
+    },
+    {
+      number: 1,
       title: 'CI/CD Automation',
-      description: 'Set up automated pipelines for smooth deployment cycles and efficient software development.',
+      description: 'Set up automated pipelines for continuous integration and continuous delivery to streamline testing, building, and deploying software.',
       category: 'devops',
       slug: 'ci-cd-automation'
     },
     {
-      number: '04',
+      number: 2,
       title: 'Cloud Infrastructure Management',
-      description: 'Manage and scale infrastructure on cloud platforms like AWS, GCP, and Azure.',
+      description: 'Manage and scale infrastructure using cloud platforms like AWS, GCP, and Azure to ensure reliability and cost-efficiency.',
       category: 'devops',
       slug: 'cloud-infrastructure'
     },
     {
-      number: '05',
-      title: 'AI Chatbot Development',
-      description: 'Create intelligent AI chatbots to automate customer service and improve user engagement.',
-      category: 'agentic-ai',
-      slug: 'ai-chatbot-development'
+      number: 3,
+      title: 'Docker & Kubernetes Orchestration',
+      description: 'Automate container deployment, scaling, and management using Docker and Kubernetes for seamless orchestration.',
+      category: 'devops',
+      slug: 'docker-kubernetes-orchestration'
     },
     {
-      number: '06',
-      title: 'Workflow Automation',
-      description: 'Automate business processes and workflows to improve operational efficiency.',
-      category: 'agentic-ai',
-      slug: 'workflow-automation'
+      number: 4,
+      title: 'Monitoring & Logging Setup',
+      description: 'Implement tools like Prometheus and Grafana to monitor infrastructure and applications for improved performance and reliability.',
+      category: 'devops',
+      slug: 'monitoring-logging'
+    },
+    {
+      number: 5,
+      title: 'Automation & Scripting',
+      description: 'Automate DevOps tasks with custom Bash or Python scripts to enhance workflow efficiency and reduce human errors.',
+      category: 'devops',
+      slug: 'automation-scripting'
     }
+
   ];
 
   // Filter services based on activeTab
@@ -112,7 +148,7 @@ export default function Services() {
                       color: activeTab === key ? '#ffffff' : '#4b5563', // Tailwind gray-600
                       padding: '8px 18px',
                       border: 'none',
-                      fontSize:'14px',
+                      fontSize: '14px',
                       borderRadius: '999px',
                       transition: 'all 0.6s ease',
                       minWidth: '110px',
