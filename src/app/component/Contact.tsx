@@ -30,13 +30,15 @@ export default function Contact() {
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [status, setStatus] = useState<string>('');
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
+
+        setFormData({
+            ...formData,
             [name]: value,
-        }));
+        });
     };
+
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -73,37 +75,6 @@ export default function Contact() {
         }
     };
 
-
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-    //     setLoading(true);
-    //     setError(null);
-    //     setSuccessMessage(null);
-
-    //     const formData = new FormData(e.target as HTMLFormElement);
-    //     const formDataObject = Object.fromEntries(formData.entries());
-
-    //     // Example API call to submit form data (adjust this with your backend endpoint)
-    //     try {
-    //         const response = await fetch('/api/contact', {
-    //             method: 'POST',
-    //             body: JSON.stringify(formDataObject),
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //         });
-
-    //         if (response.ok) {
-    //             setSuccessMessage("Thank you for contacting us. We will get back to you shortly.");
-    //         } else {
-    //             setError("There was an issue sending the message. Please try again.");
-    //         }
-    //     } catch (error) {
-    //         setError("There was an issue sending the message. Please try again.");
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
 
     // Schema for Contact Page
     const personSchema = {
@@ -217,6 +188,9 @@ export default function Contact() {
                                                         <option>Frontend Development</option>
                                                         <option>Backend Development</option>
                                                         <option>API Development</option>
+                                                        <option>DevOps</option>
+                                                        <option>Agentic AI Solutions</option>
+                                                        <option>Consultation</option>
                                                     </select>
                                                 </div>
                                             </div>
