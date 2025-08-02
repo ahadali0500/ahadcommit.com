@@ -34,6 +34,11 @@ export default function Main() {
                       <i className="fa-brands fa-whatsapp" />
                     </a>
                   </li>
+                  <li>
+                    <a href="https://www.youtube.com/@ahadcommit">
+                      <i className="fa-brands fa-youtube" />
+                    </a>
+                  </li>
                 </ul>
               </div>
 

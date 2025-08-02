@@ -5,81 +5,123 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 const cardData = [
   {
-    categories: ["AI Projects", "EdTech", "LLM Integrations"],
+    categories: ["EdTech", "DevOps & Deployment", "Full Stack Development"],
     images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/6450679bdd21473da802beee5e9cfcd6-1744134028720/New%20Website%20Blue%20Mockup%20Instagram%20-%20Laptop%20(1).png" },
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/f107ef85c61e4b95ad6c88ee2be4a80a-1742734879217/New%20Website%20Blue%20Mockup%20Instagram%20-%20Laptop222222222222.png" },
-      // { type: 'video', src: "https://www.w3schools.com/html/mov_bbb.mp4" }
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113690/EM_01_Dashboard_nwabix.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113687/EM_03_Dashboard_huc0mb.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113683/EM_02_Signup_cwka37.svg" },
     ],
-    title: "JobTech – AI-Powered Quiz, Interview & Resume Generator",
-    description: "I developed an AI-driven web application designed to generate quizzes, interview questions, and professional resumes. The platform leverages advanced technologies such as Next.js for the frontend and PHP for backend operations.",
-    github: "https://github.com/ahadali0500/Job-portal-project",
-    website: "https://job-tech.vercel.app"
+    title: "Emergi Mentor - Bridge to Mentorship",
+    description: "I manage platform deployment on AWS and VPS using CI/CD pipelines, ensuring smooth updates and ongoing maintenance. Leveraging Node.js, Laravel, React, and Next.js, I build scalable web solutions that connect Australian students and professionals with global mentors in AI, data science, and software development.",
+    website: "http://emergimentors.com.au"
   },
   {
-    categories: ["E-commerce Solutions"],
+    categories: ["FinTech / Crypto", "Full Stack Development", "DevOps & Deployment"],
     images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/f107ef85c61e4b95ad6c88ee2be4a80a-1742734879217/New%20Website%20Blue%20Mockup%20Instagram%20-%20Laptop222222222222.png" }
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113676/Crypto_01_byufp5.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113679/Crypto_02_fgr4k4.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113672/Crypto_03_ugkf6d.svg" },
     ],
-    title: "MajesticGB - Global Produce Delivery",
-    description: "PHP Bootstrap solution for effortless national bookings and international syndicate deliveries of fresh fruits and vegetables.",
-    github: "https://github.com/ahadali0500/majesticgb-project",
-    website: "https://majesticgb.com"
+    title: "Cryptovia – Deposit to Withdraw",
+    description: "Cryptovia is a Web2-based crypto transaction platform built using React, Next.js, Node.js, Express, MySQL, and Socket.io. Deployed on a VPS with Docker and Jenkins, it enables users to securely deposit, exchange, and withdraw crypto assets — with full backend control and real-time updates.",
   },
   {
-    categories: ["Institute Website with LMS"],
+    categories: ["EdTech", "Learning Management System (LMS)", "Full Stack Development"],
     images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/792d4a1ca82297d9943b31b99622eec5-1741712614565/Screenshot%202025-03-11%20220321.png" }
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113704/Medipedia_01_3_pm3zz1.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113710/Medipedia_01_5_qo2pck.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113710/Medipedia_01_4_bfyk6s.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113716/Medipedia_01_6_qlftbs.svg" },
     ],
     title: "Skill Alfa - Smart Learning Platform",
-    description: "Check out Skill Alfa! Built with Laravel and React for learners and Laravel + Bootstrap for admin. Focused on smooth, user-friendly education.",
+    description: "Skill Alfa is a smart learning platform built for a modern education experience. Developed using Laravel and React for learners, and Laravel with Bootstrap for admin, it delivers a smooth, intuitive interface tailored for a growing edtech startup.",
     github: "https://github.com/ahadali0500/skillalfa-cms-project",
     website: "https://www.skillalfa.com"
   },
   {
-    categories: ["Logistics"],
+    categories: ["EdTech", "Exam Preparation", "Full Stack Development"],
     images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/3c2caef3eb6ac076d239dfb2ee7e6519-1741712338391/Screenshot%202025-03-11%20215832.png" }
-    ],
-    title: "AutoMove - Truck Dispatch",
-    description: "Developed for Desired Technology: Truck dispatch site with call center and admin dashboard. Frontend in React, backend in PHP.",
-    github: "https://github.com/ahadali0500/lead-generations-project",
-    website: "https://moverslead.interactimmigration.com/callcenter"
-  },
-  {
-    categories: ["Healthcare Education"],
-    images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/5fae29f344e371a0fcd97d02005a4a27-1741712790405/Screenshot%202025-03-11%20220618.png" }
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113701/Medipedia_01_2_y7u92p.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113776/Medipedia_01_fc4khz.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113701/Medipedia_01_2_y7u92p.svg" },
+
     ],
     title: "Medipedia - MCQs Platform",
-    description: "An MCQs-based web app for medical students built with Next.js, Bootstrap UI, NextAuth, and PHP backend.",
+    description: "Medipedia is an MCQs-based web platform designed to help medical students prepare for exams. Built with Next.js, Bootstrap UI, NextAuth for authentication, and a PHP backend, it offers a seamless and focused learning experience.",
     github: "https://github.com/ahadali0500/Medipedia-project",
     website: "https://medipedia.vercel.app/"
   },
   {
-    categories: ["Real Estate"],
+    categories: ["E-commerce Solutions", "Full Stack Development", "Multi-Panel Systems"],
     images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/74ebd7e1c419a91c932d5740212e8be7-1742736827483/New%20Website%20Blue%20Mockup%20Instagram%20-%20Laptop2222222222222222222222222222.jpg" }
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113747/Medipedia_01_14_eztp2y.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113753/Medipedia_01_16_kgcejo.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113741/Medipedia_01_15_xkdzuw.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113753/Medipedia_01_19_ikhpqv.svg" },
     ],
-    title: "BinSadiq - Real Estate",
-    description: "Single-page website for pre-rented property sales in Pakistan. Built using Bootstrap."
+    title: "Josam Solutions",
+    description: "Josam is a robust e-commerce platform developed with Node.js, Express.js, React.js, and Next.js, featuring custom API integrations and advanced search capabilities. The system includes four distinct panels — admin, vendor, and customer (web-based) and a dedicated mobile app for drivers..",
+    github: "https://github.com/ahadali0500/Job-portal-project",
+    website: "https://job-tech.vercel.app/"
   },
   {
-    categories: ["Immigration Websites"],
+    categories: ["AI Projects", "Career Tools", "Full Stack Development"],
     images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/cf111a76111161e5cfa7c41681ed6cc5-1741713001937/Screenshot%202025-03-11%20220823.png" }
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113699/Job_Tech_01_evc4kd.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113697/Job_Tech_01_3_aqhjyi.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113686/Job_Tech_01_2_pkeips.svg" },
     ],
-    title: "Interact Immigration - Maintenance",
-    description: "Fixed bugs, added modules, and maintained this PHP/Bootstrap-based site at Desired Technology.",
-    website: "https://interactimmigration.com/"
+    title: "JobTech – AI-Powered Quiz, Interview & Resume Generator",
+    description: "I developed an AI-driven web application designed to generate quizzes, interview questions, and professional resumes. The platform leverages advanced technologies such as Next.js for the frontend and PHP for backend operations.",
+    github: "https://github.com/ahadali0500/Job-portal-project",
+    website: "https://job-tech.vercel.app/"
+  },
+  {
+    categories: ["Real Estate"],
+    images: [
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113757/Medipedia_01_20_jf9vm8.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113773/Medipedia_01_21_bpq4bz.svg" },
+    ],
+    title: "BinSadiq & MCP Real Estate",
+    description: "BinSadiq & MCP Real Estate is a single-page website built with Bootstrap and PHP for showcasing pre-rented property sales in Pakistan. Designed as a digital marketing landing page, it targets the local market to generate high-quality real estate leads.",
   },
   {
     categories: ["FinTech"],
     images: [
-      { type: 'image', src: "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/project_item/attachment/e55f8ec0d5368ca912e20e073de4deb3-1741713367004/Screenshot%202025-03-11%20221401.png" }
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113728/Medipedia_01_8_irjlrf.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113723/Medipedia_01_9_taliss.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113713/Medipedia_01_7_liaalj.svg" }
+
     ],
-    title: "Algoscripts",
-    description: "Integrated real-time stock APIs into Laravel + Bootstrap interface for script-based trading logic."
+    title: "MajesticGB - Global Produce Delivery",
+    description: "Majestic Distribution is a PHP and Bootstrap-based platform designed to streamline national bookings and international syndicate deliveries of fresh fruits and vegetables. It offers a simple, efficient interface for managing large-scale produce logistics.",
+    github: "https://github.com/ahadali0500/majesticgb-project",
+    website: "https://majesticgb.com/"
+  },
+  {
+    categories: ["Immigration Services", "Web Maintenance & Optimization", "Full Stack Enhancement"],
+    images: [
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113773/Medipedia_01_24_s08uy3.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113771/Medipedia_01_25_blrbvj.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113769/Medipedia_01_23_ke6hy9.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113768/Medipedia_01_22_wqswsu.svg" },
+
+    ],
+    title: "Interact Immigration - Maintenance",
+    description: "Interact Immigration is a platform built to simplify immigration-related services by optimizing both front-end and back-end workflows. I improved and maintained the system to enhance user experience, operational efficiency, and overall platform stability.",
+    website: "https://interactimmigration.com"
+  },
+  {
+    categories: ["Logistics & Dispatch", "Full Stack Development"],
+    images: [
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113735/Medipedia_01_10_wcy24r.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113728/Medipedia_01_11_cq6hyn.svg" },
+      { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113728/Medipedia_01_12_hloe1v.svg" },
+    ],
+    title: "AutoMove - Truck Dispatch",
+    description: "Automove is a dispatch and logistics platform built for Desired Technology, designed to streamline bookings and delivery operations. Developed using React and Bootstrap on the frontend with a PHP backend, it ensures efficient fleet and order management.",
+    github: "https://github.com/ahadali0500/lead-generations-project",
+    website: "https://moverslead.interactimmigration.com/callcenter/"
   }
 ];
 
@@ -155,14 +197,14 @@ export default function Project() {
                             src={media.src}
                             alt={card.title}
                             className="d-block w-100"
-                            // style={{ height: '340px', objectFit: 'cover' }}
+                          // style={{ height: '340px', objectFit: 'cover' }}
                           />
                         )}
                       </Carousel.Item>
                     ))}
                   </Carousel>
 
-                  <div className="position-absolute top-0 end-0 m-2" style={{zIndex:'1'}} >
+                  <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: '1' }} >
                     {card.github && (
                       <a href={card.github} target="_blank" rel="noopener noreferrer" className="me-2">
                         <i className="fab fa-github fs-4 text-dark" />
@@ -170,13 +212,19 @@ export default function Project() {
                     )}
                     {card.website && (
                       <a href={card.website} target="_blank" rel="noopener noreferrer">
-                        <i className="fas fa-globe fs-4 text-dark" />
+                        <i style={{ color: 'black' }} className="fa-solid fa-arrow-up-right-from-square"></i>
                       </a>
                     )}
                   </div>
                 </div>
                 <div className="card-body pb-3" style={{ fontSize: 'small' }}>
-                  <h6 className="card-title">{card.title}</h6>
+                  <h6 className="card-title">{card.title}
+                    <span>{card.website && (
+                      <a href={card.website} target="_blank" rel="noopener noreferrer">
+                        <i style={{ color: 'black', fontSize: '14px', padding: '6px' }} className="fa-solid fa-arrow-up-right-from-square"></i>
+                      </a>
+                    )}</span>
+                  </h6>
                   <p className="card-text">{card.description}</p>
                 </div>
               </div>

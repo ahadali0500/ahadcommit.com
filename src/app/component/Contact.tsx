@@ -251,6 +251,9 @@ export default function Contact() {
                                     <a className="social-iconsss" href="https://wa.me/+923256234131" target="_blank" rel="noopener noreferrer">
                                         <i className="fa-brands fa-whatsapp" />
                                     </a>
+                                    <a className="social-iconsss" href="https://www.youtube.com/@ahadcommit" target="_blank" rel="noopener noreferrer">
+                                        <i className="fa-brands fa-youtube" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
