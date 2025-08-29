@@ -8,7 +8,7 @@ export default function Main() {
           <div className="col-md-8">
             <div className="hero-content-box">
               <h1 className="hero-title " style={{ lineHeight: '40px' }} >
-                <span style={{ fontSize: '52px' }} >ΔĦΔĐ ΔŁƗ  </span><br></br> <br></br><span style={{ fontSize: '32px' }}> Expert in Full Stack Development, DevOps, & Agentic AI Systems</span>
+                <span style={{ fontSize: '52px' }} >ΔĦΔĐ ΔŁƗ  </span><br></br> <br></br><span style={{ fontSize: '32px' }}> Expert in Full Stack Development, DevOps, & AI Systems</span>
               </h1>
               <p className="mt-4 text-base sm:text-lg text-gray-700">
                 As a Full Stack Web Developer, DevOps enthusiast, and Agentic AI expert, Ahad Ali specializes in building scalable, high-performance web platforms using React, Laravel, Docker, and modern cloud-native tools. He creates seamless frontend interfaces, secure backend APIs, and implements AI-driven automation to optimize user interactions and streamline processes. His focus is on delivering end-to-end digital solutions that are reliable, maintainable, and optimized for both users and developers.
