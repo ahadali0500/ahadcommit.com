@@ -32,6 +32,9 @@ export default function Home() {
     <>
       <Navbar></Navbar>
       <main>
+        {/* <h1 className="text-3xl text-amber-400 font-bold underline">
+          Hello world!
+        </h1> */}
         <Main></Main>
         <Services></Services>
         <Project></Project>
@@ -39,7 +42,6 @@ export default function Home() {
         <Experience educationExperience={educationExperience} workExperience={workExperience}></Experience>
         <Skill></Skill>
         <Contact></Contact>
-
       </main>
       <Footer></Footer>
     </>

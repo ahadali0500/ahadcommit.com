@@ -2,10 +2,13 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { useRouter, useSearchParams } from 'next/navigation';
+import ImageCarousel from "./image-carousel"
+import { ExternalLink, Github, Globe, Globe2 } from 'lucide-react';
+import { motion } from "framer-motion";
 
 const cardData = [
   {
-    categories: ["EdTech", "DevOps & Deployment", "Full Stack Development"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud", "AI / LLM Tools"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113690/EM_01_Dashboard_nwabix.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113687/EM_03_Dashboard_huc0mb.svg" },
@@ -16,7 +19,7 @@ const cardData = [
     website: "http://emergimentors.com.au"
   },
   {
-    categories: ["FinTech / Crypto", "Full Stack Development", "DevOps & Deployment"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113676/Crypto_01_byufp5.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113679/Crypto_02_fgr4k4.svg" },
@@ -26,7 +29,7 @@ const cardData = [
     description: "Cryptovia is a Web2-based crypto transaction platform built using React, Next.js, Node.js, Express, MySQL, and Socket.io. Deployed on a VPS with Docker and Jenkins, it enables users to securely deposit, exchange, and withdraw crypto assets — with full backend control and real-time updates.",
   },
   {
-    categories: ["EdTech", "Learning Management System (LMS)", "Full Stack Development"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113704/Medipedia_01_3_pm3zz1.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113710/Medipedia_01_5_qo2pck.svg" },
@@ -39,7 +42,7 @@ const cardData = [
     website: "https://www.skillalfa.com"
   },
   {
-    categories: ["EdTech", "Exam Preparation", "Full Stack Development"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113701/Medipedia_01_2_y7u92p.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113776/Medipedia_01_fc4khz.svg" },
@@ -52,7 +55,7 @@ const cardData = [
     website: "https://medipedia.vercel.app/"
   },
   {
-    categories: ["E-commerce Solutions", "Full Stack Development", "Multi-Panel Systems"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113747/Medipedia_01_14_eztp2y.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113753/Medipedia_01_16_kgcejo.svg" },
@@ -65,7 +68,7 @@ const cardData = [
     website: "https://job-tech.vercel.app/"
   },
   {
-    categories: ["AI Projects", "Career Tools", "Full Stack Development"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113699/Job_Tech_01_evc4kd.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113697/Job_Tech_01_3_aqhjyi.svg" },
@@ -77,7 +80,7 @@ const cardData = [
     website: "https://job-tech.vercel.app/"
   },
   {
-    categories: ["Real Estate"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113757/Medipedia_01_20_jf9vm8.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113773/Medipedia_01_21_bpq4bz.svg" },
@@ -86,7 +89,7 @@ const cardData = [
     description: "BinSadiq & MCP Real Estate is a single-page website built with Bootstrap and PHP for showcasing pre-rented property sales in Pakistan. Designed as a digital marketing landing page, it targets the local market to generate high-quality real estate leads.",
   },
   {
-    categories: ["FinTech"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113728/Medipedia_01_8_irjlrf.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113723/Medipedia_01_9_taliss.svg" },
@@ -99,7 +102,7 @@ const cardData = [
     website: "https://majesticgb.com/"
   },
   {
-    categories: ["Immigration Services", "Web Maintenance & Optimization", "Full Stack Enhancement"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113773/Medipedia_01_24_s08uy3.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113771/Medipedia_01_25_blrbvj.svg" },
@@ -112,7 +115,7 @@ const cardData = [
     website: "https://interactimmigration.com"
   },
   {
-    categories: ["Logistics & Dispatch", "Full Stack Development"],
+    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113735/Medipedia_01_10_wcy24r.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113728/Medipedia_01_11_cq6hyn.svg" },
@@ -125,113 +128,114 @@ const cardData = [
   }
 ];
 
-const allCategories = [
-  'All',
-  ...Array.from(new Set(cardData.flatMap(card => card.categories)))
-];
+const allCategories = ["All", ...Array.from(new Set(cardData.flatMap((card) => card.categories)))]
 
 export default function Project() {
-  const router = useRouter();
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState("All")
+  const [hovered, setHovered] = useState(false);
 
   const filteredCards =
-    activeCategory === 'All'
-      ? cardData
-      : cardData.filter(card => card.categories.includes(activeCategory));
-
-  const handleCategoryChange = (cat: string) => {
-    setActiveCategory(cat);
-  };
+    activeCategory === "All" ? cardData : cardData.filter((card) => card.categories.includes(activeCategory))
 
   return (
-    <section className="portfolio-section" id="works-section">
-      <div className="container">
-        <div className="section-header text-center mb-4">
-          <h2 className="section-title wow fadeInUp" data-wow-delay=".3s">
-            My Recent Works
-          </h2>
-          <p className="wow fadeInUp" data-wow-delay=".4s">
-            We put your ideas and thus your wishes in the form of a unique web project that inspires you and your customers.
-          </p>
+    <section className="py-20 bg-slate-950" id="works-section">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 mt-10 md:mt-20">
+        <div className="text-center mb-5 md:mb-6">
+          <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">My Recent Works</h1>
+          <p className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto"> We put your ideas and thus your wishes in the form of a unique web project that inspires you and your customers. </p>
         </div>
 
-        <div className="text-center mb-4">
+        <div className="no-scrollbar flex flex-nowrap justify-center overflow-x-auto snap-x snap-mandatory gap-1 md:gap-2 mb-10 md:mb-10 -mx-4 px-4 w-full">
           {allCategories.map((cat, idx) => (
             <button
               key={idx}
-              className={`btn btn-sm mx-1 mb-2`}
-              style={{
-                backgroundColor: activeCategory === cat ? '#8e2de2' : 'transparent',
-                color: activeCategory === cat ? '#fff' : '#8e2de2',
-                border: '1px solid #8e2de2',
-              }}
-              onClick={() => handleCategoryChange(cat)}
+              className={`px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 shrink-0 whitespace-nowrap snap-center ${activeCategory === cat
+                ? "bg-purple-600 text-white shadow"
+                : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
+                }`}
+              onClick={() => setActiveCategory(cat)}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        <div className="row">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCards.map((card, index) => (
-            <div className="col-lg-4 mb-5 mt-4" key={index}>
-              <div className="card h-100 shadow">
-                <div className="position-relative">
-                  <Carousel interval={4000} controls={true} indicators={false} keyboard={true} touch={true}>
-                    {card.images.map((media, i) => (
-                      <Carousel.Item key={i}>
-                        {media.type === 'video' ? (
-                          <video
-                            className="d-block w-100"
-                            style={{ height: '340px', objectFit: 'cover' }}
-                            controls
-                            autoPlay
-                            muted
-                            loop
-                          >
-                            <source src={media.src} type="video/mp4" />
-                            Your browser does not support the video tag.
-                          </video>
-                        ) : (
-                          <img
-                            src={media.src}
-                            alt={card.title}
-                            className="d-block w-100"
-                          // style={{ height: '340px', objectFit: 'cover' }}
-                          />
-                        )}
-                      </Carousel.Item>
-                    ))}
-                  </Carousel>
+            <div
+              key={index}
+              className=" bg-white/5 border border-white/10 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              {/* Image Carousel */}
+              <div className="relative group">
+                <ImageCarousel
+                  images={card.images}
+                  autoSlideInterval={3000}
+                  onImageChange={(idx) => console.log(`[v0] Image changed to ${idx}`)}
+                />
 
-                  <div className="position-absolute top-0 end-0 m-2" style={{ zIndex: '1' }} >
-                    {card.github && (
-                      <a href={card.github} target="_blank" rel="noopener noreferrer" className="me-2">
-                        <i className="fab fa-github fs-4 text-dark" />
-                      </a>
-                    )}
-                    {card.website && (
-                      <a href={card.website} target="_blank" rel="noopener noreferrer">
-                        <i style={{ color: 'black' }} className="fa-solid fa-arrow-up-right-from-square"></i>
-                      </a>
-                    )}
-                  </div>
+                {/* Top-left icons */}
+                <div className="absolute top-3 left-2 flex gap-1 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                  {card.website && (
+                    <a
+                      href={card.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors duration-200 shadow-md"
+                      onMouseEnter={() => setHovered(true)}
+                      onMouseLeave={() => setHovered(false)}
+                    >
+                      <motion.div
+                        animate={
+                          hovered
+                            ? { rotate: 0 } // stops shaking when hovered
+                            : { rotate: [0, -5, 5, -5, 5, 0] } // shake loop
+                        }
+                        transition={{
+                          duration: 1.2,
+                          repeat: hovered ? 0 : Infinity,
+                        }}
+                      >
+                        <ExternalLink size={18} className="text-white" />
+                      </motion.div>
+                    </a>
+                  )}
+
+                  {card.github && (
+                    <a
+                      href={card.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors duration-200 shadow-md"
+                      onMouseEnter={() => setHovered(true)}
+                      onMouseLeave={() => setHovered(false)}
+                    >
+                      <motion.div
+                        animate={
+                          hovered
+                            ? { rotate: 0 } // stops shaking when hovered
+                            : { rotate: [0, -5, 5, -5, 5, 0] } // shake loop
+                        }
+                        transition={{
+                          duration: 1.2,
+                          repeat: hovered ? 0 : Infinity,
+                        }}
+                      >
+                        <Github size={18} className="text-white" />
+                      </motion.div>
+                    </a>
+                  )}
                 </div>
-                <div className="card-body pb-3" style={{ fontSize: 'small' }}>
-                  <h6 className="card-title">{card.title}
-                    <span>{card.website && (
-                      <a href={card.website} target="_blank" rel="noopener noreferrer">
-                        <i style={{ color: 'black', fontSize: '14px', padding: '6px' }} className="fa-solid fa-arrow-up-right-from-square"></i>
-                      </a>
-                    )}</span>
-                  </h6>
-                  <p className="card-text">{card.description}</p>
-                </div>
+              </div>
+
+              <div className="p-4">
+                <h6 className="text-lg font-bold text-white mb-2">{card.title}</h6>
+                <p className="text-gray-300 text-sm md:text-md">{card.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
+  )
 }

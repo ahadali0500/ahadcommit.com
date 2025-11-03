@@ -1,121 +1,218 @@
-'use client';
-import { ExternalLink } from 'lucide-react';
-import React, { useState } from 'react';
+"use client";
+import { ExternalLink } from "lucide-react";
+import { useState } from "react";
 import Link from "next/link";
-import Head from 'next/head';
 
-// Define Work Experience Schema Type
+type Item = {
+  title: string;
+  company: string;      // issuer/school/company
+  logo?: string;
+  link?: string;
+  description?: string;
+  location?: string;
+  period?: string;      // dates or validity
+};
 
-
-
-function ReadMoreText({ text, maxLength = 150 }: any) {
+function ReadMoreText({ text = "", maxLength = 250 }: { text?: string; maxLength?: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
-
-  if (text.length <= maxLength) {
-    return <span>{text}</span>;
-  }
-
+  if (!text || text.length <= maxLength) return <span>{text}</span>;
   return (
     <span>
       {isExpanded ? text : `${text.substring(0, maxLength)}...`}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="read-more-btn"
-        style={{
-          background: 'none',
-          border: 'none',
-          color: '#4299e1',
-          cursor: 'pointer',
-          fontWeight: '500',
-          marginLeft: '8px',
-          padding: '0',
-          fontSize: 'inherit',
-          textDecoration: 'none',
-          transition: 'color 0.2s ease'
-        }}
+        className="ml-2 text-purple-500 font-semibold hover:text-purple-400 transition"
       >
-        {isExpanded ? 'Read Less' : 'Read More'}
+        {isExpanded ? "Read Less" : "Read More"}
       </button>
     </span>
   );
 }
 
-export default function Experience({ educationExperience, workExperience }: any) {
+/** Simple tab button */
+function TabButton({ value, active, onClick, children }: any) {
+  return (
+    <button
+      type="button"
+      onClick={() => onClick(value)}
+
+      className={`px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 shrink-0 whitespace-nowrap snap-center ${active
+        ? "bg-purple-600 text-white shadow"
+        : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
+        }`}
+      aria-pressed={active}
+      role="tab"
+    >
+      {children}
+    </button>
+  );
+}
+
+
+/** Reusable card */
+function TimelineCard({ item }: { item: Item }) {
+  return (
+    <div className="relative bg-white/5 border border-white/10 p-4 rounded-xl">
+      <h1 className="text-lg md:text-lg font-bold text-white">{item.title}</h1>
+
+      <div className="flex items-center gap-3 my-3">
+        <img
+          src={item?.logo || "/placeholder.svg"}
+          alt={`${item.company} logo`}
+          className="w-12 h-12 object-contain rounded-md bg-white p-1"
+        />
+        <div className="font-semibold text-md md:text-md text-white">{item.company}</div>
+        {item.link ? (
+          <Link target="_blank" href={item.link} className="text-purple-500 hover:text-purple-400" aria-label="External link">
+            <ExternalLink size={16} />
+          </Link>
+        ) : null}
+      </div>
+
+      {item.description ? (
+        <p className="text-gray-300 text-sm md:text-md mb-2">
+          <ReadMoreText text={item.description} maxLength={250} />
+        </p>
+      ) : null}
+
+      {item.location ? <div className="text-gray-400 text-xs">{item.location}</div> : null}
+      {item.period ? <div className="text-purple-500 text-sm md:text-md font-semibold mt-2">{item.period}</div> : null}
+    </div>
+  );
+}
+
+
+export default function Experience({
+  educationExperience = [],
+  workExperience = [],
+  certifications = [],
+}: {
+  educationExperience?: Item[];
+  workExperience?: Item[];
+  certifications?: Item[];
+}) {
+  const [tab, setTab] = useState<"all" | "experience" | "education" | "certifications">("all");
 
   return (
-    <>
+    <div className="bg-slate-950 text-white py-20">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 mt-10 md:mt-20">
+        <div className="text-center mb-5 md:mb-6">
+          <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">Experience & Education</h1>
+          <p className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto">
+            My professional journey, academic background, and certifications.
+          </p>
+        </div>
 
+        <div
+          className="no-scrollbar flex flex-nowrap justify-center overflow-x-auto snap-x snap-mandatory gap-1 md:gap-2 mb-10 md:mb-10 -mx-4 px-4 w-full"
+          role="tablist"
+        >
+          <TabButton value="all" active={tab === "all"} onClick={(v: any) => setTab(v as any)}>All</TabButton>
+          <TabButton value="experience" active={tab === "experience"} onClick={(v: any) => setTab(v as any)}>Experience</TabButton>
+          <TabButton value="education" active={tab === "education"} onClick={(v: any) => setTab(v as any)}>Education</TabButton>
+          <TabButton value="certifications" active={tab === "certifications"} onClick={(v: any) => setTab(v as any)}>Certifications</TabButton>
+        </div>
 
-      <div className="services-section">
-        <div className="container">
-          <div className="section-header mt-5">
-            <h1 className="section-title">Experience & Education</h1>
-            <p className="section-subtitle">
-              My professional journey and academic background that shaped my expertise in technology and innovation.
-            </p>
-          </div>
-
-          <div className="experience-grid">
-            {/* Work Experience */}
-            <div className="experience-column">
-              <div className="column-header">
-                <div className="column-icon">💼</div>
-                <h2 className="column-title">Work Experience</h2>
+        {tab === "all" && (
+          <div className="space-y-12">
+            {/* Work */}
+            <section>
+              <div className="flex items-center gap-3 mb-8">
+                <div className="text-3xl">💼</div>
+                <h2 className="text-xl md:text-2xl font-bold text-white">Work Experience</h2>
               </div>
-              <div className="timeline-container">
-                <div className="timeline-line"></div>
-                {workExperience.map((exp: any, idx: any) => (
-                  <div className="experience-item" key={idx}>
-                    <div className="experience-header">
-                      <div className="experience-info">
-                        <h4 className="experience-title">{exp.title}</h4>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px', marginTop: '20px' }}>
-                          <img src={exp?.logo} alt={`${exp.company} logo`} style={{ width: '50px', height: '50px', objectFit: 'contain', borderRadius: '8px', backgroundColor: '#fff' }} />
-                          <div className="experience-company" style={{ fontWeight: 600 }}>
-                            {exp.company}
-                          </div>
-                          <Link className='mb-3' target="_blank" href={exp.link} > <ExternalLink /></Link>
-                        </div>
-                      </div>
-                      <div className="experience-period">{exp.period}</div>
-                    </div>
-                    <p className="experience-description">
-                      <ReadMoreText text={exp.description} maxLength={150} />
-                    </p>
-                    <div className="experience-location">{exp.location}</div>
-                  </div>
-                ))}
+              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
+                {workExperience?.length ? (
+                  workExperience.map((exp, idx) => <TimelineCard key={`work-${idx}`} item={exp} />)
+                ) : (
+                  <p className="text-gray-400">No work experience added yet.</p>
+                )}
               </div>
-            </div>
+            </section>
 
             {/* Education */}
-            <div className="experience-column">
-              <div className="column-header">
-                <div className="column-icon">🎓</div>
-                <h2 className="column-title">Education</h2>
+            <section>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="text-3xl">🎓</div>
+                <h2 className="text-xl md:text-2xl font-bold text-white">Education</h2>
               </div>
-              <div className="timeline-container">
-                <div className="timeline-line"></div>
-                {educationExperience.map((edu: any, idx: any) => (
-                  <div className="experience-item" key={idx}>
-                    <div className="experience-header">
-                      <div className="experience-info">
-                        <h4 className="experience-title">{edu.title}</h4>
-                        <div className="experience-company">{edu.company}</div>
-                      </div>
-                      <div className="experience-period">{edu.period}</div>
-                    </div>
-                    <p className="experience-description">
-                      <ReadMoreText text={edu.description} maxLength={150} />
-                    </p>
-                    <div className="experience-location">{edu.location}</div>
-                  </div>
-                ))}
+              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
+                {educationExperience?.length ? (
+                  educationExperience.map((edu, idx) => <TimelineCard key={`edu-${idx}`} item={edu} />)
+                ) : (
+                  <p className="text-gray-400">No education added yet.</p>
+                )}
               </div>
+            </section>
+
+            {/* Certifications */}
+            <section>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="text-3xl">📜</div>
+                <h2 className="text-xl md:text-2xl font-bold text-white">Certifications</h2>
+              </div>
+              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
+                {certifications?.length ? (
+                  certifications.map((cert, idx) => <TimelineCard key={`cert-${idx}`} item={cert} />)
+                ) : (
+                  <p className="text-gray-400">No certifications added yet.</p>
+                )}
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* EXPERIENCE ONLY */}
+        {tab === "experience" && (
+          <div>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="text-3xl">💼</div>
+              <h2 className="text-xl md:text-2xl font-bold text-white">Work Experience</h2>
+            </div>
+            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
+              {workExperience?.length ? (
+                workExperience.map((exp, idx) => <TimelineCard key={`work-only-${idx}`} item={exp} />)
+              ) : (
+                <p className="text-gray-400">No work experience added yet.</p>
+              )}
             </div>
           </div>
-        </div>
+        )}
+
+        {/* EDUCATION ONLY */}
+        {tab === "education" && (
+          <div>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="text-3xl">🎓</div>
+              <h2 className="text-xl md:text-2xl font-bold text-white">Education</h2>
+            </div>
+            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
+              {educationExperience?.length ? (
+                educationExperience.map((edu, idx) => <TimelineCard key={`edu-only-${idx}`} item={edu} />)
+              ) : (
+                <p className="text-gray-400">No education added yet.</p>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* CERTIFICATIONS ONLY */}
+        {tab === "certifications" && (
+          <div>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="text-3xl">📜</div>
+              <h2 className="text-xl md:text-2xl font-bold text-white">Certifications</h2>
+            </div>
+            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
+              {certifications?.length ? (
+                certifications.map((cert, idx) => <TimelineCard key={`cert-only-${idx}`} item={cert} />)
+              ) : (
+                <p className="text-gray-400">No certifications added yet.</p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }

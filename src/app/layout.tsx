@@ -1,5 +1,6 @@
 import HolyLoader from "holy-loader";
-import { Toaster  } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
+import './globals.css';
 
 export default function RootLayout({
   children,
@@ -9,19 +10,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="/assets/css/animate.min.css" />
-        <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/assets/css/nice-select.css" />
-        <link rel="stylesheet" href="/assets/css/backToTop.css" />
-        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
-        <link rel="stylesheet" href="/assets/css/swiper.min.css" />
-        <link rel="stylesheet" href="/assets/css/odometer-theme-default.css" />
-        <link rel="stylesheet" href="/assets/css/magnific-popup.css" />
-        <link rel="stylesheet" href="/assets/css/main.css" />
-        <link rel="stylesheet" href="/assets/css/light-mode.css" />
-        <link rel="stylesheet" href="/assets/css/responsive.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -54,7 +42,7 @@ export default function RootLayout({
           easing="linear"
         />
         {children}
-        <Toaster  />
+        <Toaster />
       </body>
     </html>
   );
