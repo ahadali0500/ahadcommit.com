@@ -34,13 +34,6 @@ export default function Navbar() {
             Home
           </Link>
           <Link
-            href="/services"
-            onClick={closeMenu}
-            className="text-white font-medium hover:text-purple-500 transition"
-          >
-            Services
-          </Link>
-          <Link
             href="/projects"
             onClick={closeMenu}
             className="text-white font-medium hover:text-purple-500 transition"

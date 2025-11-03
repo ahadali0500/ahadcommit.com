@@ -2,19 +2,14 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="py-12 ">
+    <footer className="py-12 bg-slate-950 text-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col items-center">
-          <nav className="mb-8  bg-white/5">
+          <nav className="mb-8 bg-slate-950 text-white">
             <ul className="flex flex-wrap justify-center gap-8">
               <li>
                 <Link href="/" className="text-white font-bold hover:text-purple-500 transition">
                   Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="text-white font-bold hover:text-purple-500 transition">
-                  Services
                 </Link>
               </li>
               <li>
@@ -25,11 +20,6 @@ export default function Footer() {
               <li>
                 <Link href="/experience" className="text-white font-bold hover:text-purple-500 transition">
                   Experience
-                </Link>
-              </li>
-              <li>
-                <Link href="/resume" className="text-white font-bold hover:text-purple-500 transition">
-                  Resume
                 </Link>
               </li>
               <li>

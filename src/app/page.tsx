@@ -36,7 +36,7 @@ export default function Home() {
           Hello world!
         </h1> */}
         <Main></Main>
-        <Services></Services>
+        {/* <Services></Services> */}
         <Project></Project>
 
         <Experience educationExperience={educationExperience} workExperience={workExperience}></Experience>
