@@ -9,6 +9,7 @@ import Contact from "./component/Contact";
 import Main from "./component/Main";
 import type { Metadata } from "next";
 import { educationExperience, workExperience } from '@/app/data/experience'
+import ReviewsSection from "./component/ReviewsSection";
 
 export const metadata = {
   title: {
@@ -37,10 +38,9 @@ export default function Home() {
         </h1> */}
         <Main></Main>
         {/* <Services></Services> */}
-        <Project></Project>
-
-        <Experience educationExperience={educationExperience} workExperience={workExperience}></Experience>
+        <Project title="My Latest Projects" page="home" ></Project>
         <Skill></Skill>
+        <ReviewsSection></ReviewsSection>
         <Contact></Contact>
       </main>
       <Footer></Footer>

@@ -5,6 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import ImageCarousel from "./image-carousel"
 import { ExternalLink, Github, Globe, Globe2 } from 'lucide-react';
 import { motion } from "framer-motion";
+import { features } from 'process';
+import Link from 'next/link';
+import { FaArrowCircleRight } from 'react-icons/fa';
 
 const cardData = [
   {
@@ -16,7 +19,8 @@ const cardData = [
     ],
     title: "Emergi Mentor - Bridge to Mentorship",
     description: "I manage platform deployment on AWS and VPS using CI/CD pipelines, ensuring smooth updates and ongoing maintenance. Leveraging Node.js, Laravel, React, and Next.js, I build scalable web solutions that connect Australian students and professionals with global mentors in AI, data science, and software development.",
-    website: "http://emergimentors.com.au"
+    website: "http://emergimentors.com.au",
+    feature: true
   },
   {
     categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
@@ -27,6 +31,7 @@ const cardData = [
     ],
     title: "Cryptovia – Deposit to Withdraw",
     description: "Cryptovia is a Web2-based crypto transaction platform built using React, Next.js, Node.js, Express, MySQL, and Socket.io. Deployed on a VPS with Docker and Jenkins, it enables users to securely deposit, exchange, and withdraw crypto assets — with full backend control and real-time updates.",
+    feature: true
   },
   {
     categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
@@ -52,7 +57,9 @@ const cardData = [
     title: "Medipedia - MCQs Platform",
     description: "Medipedia is an MCQs-based web platform designed to help medical students prepare for exams. Built with Next.js, Bootstrap UI, NextAuth for authentication, and a PHP backend, it offers a seamless and focused learning experience.",
     github: "https://github.com/ahadali0500/Medipedia-project",
-    website: "https://medipedia.vercel.app/"
+    website: "https://medipedia.vercel.app/",
+    feature: true
+
   },
   {
     categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
@@ -130,18 +137,21 @@ const cardData = [
 
 const allCategories = ["All", ...Array.from(new Set(cardData.flatMap((card) => card.categories)))]
 
-export default function Project() {
+export default function Project({ title = "My Recent Works", page = 'project' }: any) {
   const [activeCategory, setActiveCategory] = useState("All")
   const [hovered, setHovered] = useState(false);
 
-  const filteredCards =
-    activeCategory === "All" ? cardData : cardData.filter((card) => card.categories.includes(activeCategory))
+
+  const filteredCards = activeCategory === "All" ? cardData : cardData.filter((card) => card.categories.includes(activeCategory))
+  const filteredCard = page === 'home'
+    ? filteredCards.filter((card) => card.feature === true)
+    : filteredCards;
 
   return (
     <section className="py-20 bg-slate-950" id="works-section">
       <div className="max-w-6xl mx-auto px-4 md:px-6 mt-10 md:mt-20">
         <div className="text-center mb-5 md:mb-6">
-          <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">My Recent Works</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">{title}</h1>
           <p className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto"> We put your ideas and thus your wishes in the form of a unique web project that inspires you and your customers. </p>
         </div>
 
@@ -161,7 +171,7 @@ export default function Project() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCards.map((card, index) => (
+          {filteredCard.map((card, index) => (
             <div
               key={index}
               className=" bg-white/5 border border-white/10 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
@@ -235,6 +245,14 @@ export default function Project() {
             </div>
           ))}
         </div>
+
+        <div className="flex justify-center mt-8">
+          <Link href="/projects" className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105 transition-transform" >
+            View All Projects <FaArrowCircleRight size={16} />
+          </Link>
+        </div>
+
+
       </div>
     </section>
   )
