@@ -7,14 +7,14 @@ import type { Metadata } from "next";
 
 export const metadata = {
   title: {
-    default: "Ahad Ali Projects - Web Dev, DevOps & Agentic AI",
+    default: "Scalable & Cloud-Ready Web Projects — Ahad Ali",
     template: "%s | Ahad Ali"
   },
-  description: "Explore the Projects of Ahad Ali, showcasing web development, DevOps, and Agentic AI projects. See how I create innovative solutions for real-world challenges.",
+  description: "Explore projects by Ahad Ali, a software developer crafting scalable, AI-enhanced, and cloud-ready web applications built for speed, reliability, and growth.",
   metadataBase: new URL("https://ahadcommit.com/project"),
   openGraph: {
-    title: "Ahad Ali Projects - Web Dev, DevOps & Agentic AI",
-    description: "Explore the Projects of Ahad Ali, showcasing web development, DevOps, and Agentic AI projects. See how I create innovative solutions for real-world challenges.",
+    title: "Scalable & Cloud-Ready Web Projects — Ahad Ali",
+    description: "Explore projects by Ahad Ali, a software developer crafting scalable, AI-enhanced, and cloud-ready web applications built for speed, reliability, and growth.",
     url: "https://ahadcommit.com/project",
     siteName: "Ahad Commit",
     locale: "en_US",

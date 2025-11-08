@@ -7,14 +7,14 @@ import Experience from '../component/Experience';
 
 export const metadata = {
   title: {
-    default: "Contact for Web Development, DevOps, and AI Solutions",
+    default: "Get in Touch with Ahad Ali — Software Developer & DevOps Expert",
     template: "%s | Ahad Ali"
   },
-  description: "Get in touch with Ahad Ali for expert web development, DevOps solutions, and AI services. Let's collaborate to bring your projects to life.",
+  description: "Get in touch with Ahad Ali, a software developer and DevOps engineer specializing in scalable, AI-powered web solutions. Schedule a call or drop a message to discuss your project, collaboration, or technical idea.",
   metadataBase: new URL("https://ahadcommit.com/contact"),
   openGraph: {
-    title: "Contact for Web Development, DevOps, and AI Solutions",
-    description: "Get in touch with Ahad Ali for expert web development, DevOps solutions, and AI services. Let's collaborate to bring your projects to life.",
+    title: "Get in Touch with Ahad Ali — Software Developer & DevOps Expert",
+    description: "Get in touch with Ahad Ali, a software developer and DevOps engineer specializing in scalable, AI-powered web solutions. Schedule a call or drop a message to discuss your project, collaboration, or technical idea.",
     url: "https://ahadcommit.com/contact",
     siteName: "Ahad Commit",
     locale: "en_US",

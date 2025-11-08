@@ -22,6 +22,7 @@ export default function Navbar() {
     <nav
       className="fixed top-0 w-full z-50 backdrop-blur-md bg-slate-950/50 border-b border-purple-500/10 transition-shadow duration-300"
     >
+
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
         <Link href="/" className="text-2xl font-bold text-white">
           ΔĦΔĐ ΔŁƗ
@@ -30,6 +31,8 @@ export default function Navbar() {
         <div
           className={`flex flex-col md:flex-row gap-8 md:gap-6 absolute md:relative top-20 md:top-0 left-0 right-0 md:left-auto md:right-auto bg-[#0c1115] md:bg-transparent p-6 md:p-0 transition-all duration-300 ${menuOpen ? "flex" : "hidden md:flex"}`}
         >
+          {/* <div className="absolute w-[600px] h-[600px] bg-purple-700/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" /> */}
+
           <Link href="/" onClick={closeMenu} className="text-white font-medium hover:text-purple-500 transition">
             Home
           </Link>
@@ -77,6 +80,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-    
+
   )
 }

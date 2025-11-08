@@ -89,7 +89,7 @@
 }
 
 body {
-  background: color-mix(in oklab, var(--color-slate-950) 50%, transparent);
+  background: var(--color-slate-950);
   color: var(--foreground);
   font-family: "Funnel Display", sans-serif;
   font-optical-sizing: auto;
@@ -158,5 +158,11 @@ html {
   animation-delay: 2s;
 }
 
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

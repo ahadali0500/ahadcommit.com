@@ -1,13 +1,10 @@
 'use client';
 import React, { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import { useRouter, useSearchParams } from 'next/navigation';
-import ImageCarousel from "./image-carousel"
-import { ExternalLink, Github, Globe, Globe2 } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 import { motion } from "framer-motion";
-import { features } from 'process';
 import Link from 'next/link';
 import { FaArrowCircleRight } from 'react-icons/fa';
+import ImageCarousel from "./image-carousel";
 
 const cardData = [
   {
@@ -137,25 +134,83 @@ const cardData = [
 
 const allCategories = ["All", ...Array.from(new Set(cardData.flatMap((card) => card.categories)))]
 
-export default function Project({ title = "My Recent Works", page = 'project' }: any) {
+export default function Project({ title = "Recent Projects", page = 'project' }: any) {
   const [activeCategory, setActiveCategory] = useState("All")
   const [hovered, setHovered] = useState(false);
-
 
   const filteredCards = activeCategory === "All" ? cardData : cardData.filter((card) => card.categories.includes(activeCategory))
   const filteredCard = page === 'home'
     ? filteredCards.filter((card) => card.feature === true)
     : filteredCards;
 
-  return (
-    <section className="py-20 bg-slate-950" id="works-section">
-      <div className="max-w-6xl mx-auto px-4 md:px-6 mt-10 md:mt-20">
-        <div className="text-center mb-5 md:mb-6">
-          <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">{title}</h1>
-          <p className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto"> We put your ideas and thus your wishes in the form of a unique web project that inspires you and your customers. </p>
-        </div>
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+  };
 
-        <div className="no-scrollbar flex flex-nowrap justify-center overflow-x-auto snap-x snap-mandatory gap-1 md:gap-2 mb-10 md:mb-10 -mx-4 px-4 w-full">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.9 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+  };
+
+  return (
+    <section className="pt-20 bg-slate-950" id="works-section">
+      <div className={`max-w-6xl mx-auto px-4 md:px-6 ${page === "home" ? 'mt-0 md:mt-20' : 'mt-10 md:mt-20'} `}>
+        {/* Header Section */}
+        <motion.div
+          className="text-center mb-5 md:mb-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.2 },
+            },
+          }}
+        >
+          {page === "home" ? (
+            <motion.h2
+              className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              {title}
+            </motion.h2>
+          ) : (
+            <motion.h1
+              className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}
+            >
+              {title}
+            </motion.h1>
+          )}
+          <motion.p
+            className="text-gray-300 text-sm md:text-md lg:text-lg"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+            }}
+          >
+            I create modern web applications that blend clean code, automation, and AI-driven design.
+            Each project is built to scale effortlessly, ensuring performance, reliability, and real-world impact.
+          </motion.p>
+        </motion.div>
+
+        {/* Category Tabs */}
+        <motion.div
+          className="no-scrollbar flex flex-nowrap justify-center overflow-x-auto snap-x snap-mandatory gap-1 md:gap-2 mb-10 md:mb-10 -mx-4 px-4 w-full"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {allCategories.map((cat, idx) => (
             <button
               key={idx}
@@ -168,13 +223,36 @@ export default function Project({ title = "My Recent Works", page = 'project' }:
               {cat}
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Project Cards Grid */}
+        <motion.div
+          key={activeCategory}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+            },
+          }}
+        >
           {filteredCard.map((card, index) => (
-            <div
-              key={index}
-              className=" bg-white/5 border border-white/10 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            <motion.div
+              key={`${activeCategory}-${index}`}
+              className="bg-white/5 border border-white/10 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.4 },
+                },
+              }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
               {/* Image Carousel */}
               <div className="relative group">
@@ -198,8 +276,8 @@ export default function Project({ title = "My Recent Works", page = 'project' }:
                       <motion.div
                         animate={
                           hovered
-                            ? { rotate: 0 } // stops shaking when hovered
-                            : { rotate: [0, -5, 5, -5, 5, 0] } // shake loop
+                            ? { rotate: 0 }
+                            : { rotate: [0, -5, 5, -5, 5, 0] }
                         }
                         transition={{
                           duration: 1.2,
@@ -213,7 +291,7 @@ export default function Project({ title = "My Recent Works", page = 'project' }:
 
                   {card.github && (
                     <a
-                      href={card.website}
+                      href={card.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="relative flex items-center justify-center w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors duration-200 shadow-md"
@@ -223,8 +301,8 @@ export default function Project({ title = "My Recent Works", page = 'project' }:
                       <motion.div
                         animate={
                           hovered
-                            ? { rotate: 0 } // stops shaking when hovered
-                            : { rotate: [0, -5, 5, -5, 5, 0] } // shake loop
+                            ? { rotate: 0 }
+                            : { rotate: [0, -5, 5, -5, 5, 0] }
                         }
                         transition={{
                           duration: 1.2,
@@ -242,17 +320,27 @@ export default function Project({ title = "My Recent Works", page = 'project' }:
                 <h6 className="text-lg font-bold text-white mb-2">{card.title}</h6>
                 <p className="text-gray-300 text-sm md:text-md">{card.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center mt-8">
-          <Link href="/projects" className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105 transition-transform" >
-            View All Projects <FaArrowCircleRight size={16} />
-          </Link>
-        </div>
-
-
+        {/* View All Button */}
+        {page === "home" && (
+          <motion.div
+            className="flex justify-center mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105 transition-transform"
+            >
+              View All Projects <FaArrowCircleRight size={16} />
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   )

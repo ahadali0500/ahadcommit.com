@@ -7,14 +7,14 @@ import Skill from '../component/Skill';
 
 export const metadata = {
   title: {
-    default: "Tech Skills in Web Dev, DevOps & Agentic AI – Ahad Ali",
+    default: "Technical Skills & Core Expertise — Ahad Ali ",
     template: "%s | Ahad Ali"
   },
-  description: "Explore Ahad Ali’s key skills: full stack web dev, DevOps, cloud infrastructure, and Agentic AI—mastery in React, Laravel, Node.js, Docker & AWS.",
+  description: "Key skills of Ahad Ali, a software developer skilled in full-stack development, cloud systems, and automation for scalable, high-performance apps.",
   metadataBase: new URL("https://ahadcommit.com/skills"),
   openGraph: {
-    title: "Tech Skills in Web Dev, DevOps & Agentic AI – Ahad Ali",
-    description: "Explore Ahad Ali’s key skills: full stack web dev, DevOps, cloud infrastructure, and Agentic AI—mastery in React, Laravel, Node.js, Docker & AWS.",
+    title: "Technical Skills & Core Expertise — Ahad Ali ",
+    description: "Key skills of Ahad Ali, a software developer skilled in full-stack development, cloud systems, and automation for scalable, high-performance apps.",
     url: "https://ahadcommit.com/skills",
     siteName: "Ahad Commit",
     locale: "en_US",
@@ -26,7 +26,7 @@ export default function page() {
   return (
     <div>
       <Navbar></Navbar>
-      <main  >
+      <main>
         <Skill></Skill>
       </main>
       <Footer></Footer>

@@ -10,17 +10,18 @@ import Main from "./component/Main";
 import type { Metadata } from "next";
 import { educationExperience, workExperience } from '@/app/data/experience'
 import ReviewsSection from "./component/ReviewsSection";
+import Aboutus from "./component/Aboutus";
 
 export const metadata = {
   title: {
-    default: "Ahad Ali – Full Stack Dev | DevOps Engineer & Agentic AI",
+    default: "Ahad Ali — Software Developer | Cloud & AI-Powered Web Solutions Expert",
     template: "%s | Ahad Ali"
   },
-  description: "Experienced Full Stack Developer, DevOps Engineer & Agentic AI expert building scalable systems and AI solutions for real-world business challenges.",
+  description: "Ahad Ali is a software developer specializing in full-stack web development, cloud deployment, and AI-powered automation. He builds scalable, high-performance web apps with DevOps practices and intelligent features that drive modern digital growth.",
   metadataBase: new URL("https://ahadcommit.com/"),
   openGraph: {
-    title: "Ahad Ali – Full Stack Dev | DevOps Engineer & Agentic AI",
-    description: "Experienced Full Stack Developer, DevOps Engineer & Agentic AI expert building scalable systems and AI solutions for real-world business challenges.",
+    title: "Ahad Ali — Software Developer | Cloud & AI-Powered Web Solutions Expert",
+    description: "Ahad Ali is a software developer specializing in full-stack web development, cloud deployment, and AI-powered automation. He builds scalable, high-performance web apps with DevOps practices and intelligent features that drive modern digital growth.",
     url: "https://ahadcommit.com",
     siteName: "Ahad Commit",
     locale: "en_US",
@@ -33,12 +34,9 @@ export default function Home() {
     <>
       <Navbar></Navbar>
       <main>
-        {/* <h1 className="text-3xl text-amber-400 font-bold underline">
-          Hello world!
-        </h1> */}
         <Main></Main>
-        {/* <Services></Services> */}
-        <Project title="My Latest Projects" page="home" ></Project>
+        <Experience educationExperience={educationExperience} workExperience={workExperience} certifications={[]} active="experience" ></Experience>
+        <Project title="My Featured Projects" page="home" ></Project>
         <Skill></Skill>
         <ReviewsSection></ReviewsSection>
         <Contact></Contact>

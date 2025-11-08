@@ -9,14 +9,14 @@ import Head from 'next/head';
 import { educationExperience, workExperience } from '@/app/data/experience'
 export const metadata = {
   title: {
-    default: "Experience & Education in Web Dev, DevOps & AI – Ahad Ali",
+    default: "Experience & Certifications — Ahad Ali",
     template: "%s | Ahad Ali"
   },
-  description: "Explore Ahad Ali’s journey—leading full stack web projects, deploying scalable DevOps pipelines, and building AI-driven platforms for startups and enterprises.",
+  description: "Explore Ahad Ali’s experience and certifications as a software developer skilled in full-stack development, cloud automation, and scalable web systems.",
   metadataBase: new URL("https://ahadcommit.com/experience"),
   openGraph: {
-    title: "Experience & Education in Web Dev, DevOps & AI – Ahad Ali",
-    description: "Explore Ahad Ali’s journey—leading full stack web projects, deploying scalable DevOps pipelines, and building AI-driven platforms for startups and enterprises.",
+    title: "Experience & Certifications — Ahad Ali",
+    description: "Explore Ahad Ali’s experience and certifications as a software developer skilled in full-stack development, cloud automation, and scalable web systems.",
     url: "https://ahadcommit.com/experience",
     siteName: "Ahad Commit",
     locale: "en_US",

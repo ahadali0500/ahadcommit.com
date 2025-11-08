@@ -1,25 +1,56 @@
-import Link from "next/link"
-import { ArrowLeft, Calendar, User, Clock, Share2, Linkedin } from "lucide-react"
-import Navbar from "@/app/component/Navbar"
-import Footer from "@/app/component/Footer"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
-import Image from "next/image"
+import Link from "next/link";
+import { ArrowLeft, Calendar, User, Clock, Share2, Linkedin } from "lucide-react";
+import Navbar from "@/app/component/Navbar";
+import Footer from "@/app/component/Footer";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import Image from "next/image";
 
-async function getBlog(slug: string) {
-  const res = await fetch(`http://212.38.95.69:1397/api/blogs?filters[slug][$eq]=${slug}&populate=*`, {
-    headers: {
-      Authorization: `Bearer d1030419c17fe827ac35ab902188dd6675a8cbdab2fc381fc5d062e31f152b532996c7cfdb61fc137bf5e0ee2b83d6b755082064f2628254dc1292f8d5398098335927d92160226539a730695447ae904c995776cfa929cbf44cb5ec6461c0913587acc7ef03f2979b3315efb01932872928b3b5d78889c6ff9cfb1e4bde2f51`,
-    },
-    next: { revalidate: 60 }, // ISR: revalidate every 1 min
-  })
-
-  const data = await res.json()
-  return data?.data?.[0]
+// Blog types
+interface BlogThumbnail {
+  url: string;
+  alternativeText?: string;
+  formats?: { large?: { url: string } };
 }
 
-export default async function BlogDetail({ params }: { params: { slug: string } }) {
-  const post = await getBlog(params.slug)
+interface BlogTag {
+  slug: string;
+}
+
+interface BlogPost {
+  title: string;
+  descrption: string;
+  thumbnail?: BlogThumbnail;
+  createdAt: string;
+  readTime: number;
+  tags?: BlogTag[];
+}
+
+// Async function to fetch blog
+async function getBlog(slug: string): Promise<BlogPost | null> {
+  const res = await fetch(
+    `http://212.38.95.69:1397/api/blogs?filters[slug][$eq]=${slug}&populate=*`,
+    {
+      headers: {
+        Authorization:
+          "Bearer d1030419c17fe827ac35ab902188dd6675a8cbdab2fc381fc5d062e31f152b532996c7cfdb61fc137bf5e0ee2b83d6b755082064f2628254dc1292f8d5398098335927d92160226539a730695447ae904c995776cfa929cbf44cb5ec6461c0913587acc7ef03f2979b3315efb01932872928b3b5d78889c6ff9cfb1e4bde2f51",
+      },
+      next: { revalidate: 60 },
+    }
+  );
+
+  const data = await res.json();
+  return data?.data?.[0] ?? null;
+}
+
+// Page component
+export default async function BlogDetail({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const post = await getBlog(slug);
 
   if (!post) {
     return (
@@ -31,8 +62,12 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
           </Link>
         </div>
       </div>
-    )
+    );
   }
+
+  const thumbnailUrl =
+    post.thumbnail?.formats?.large?.url || post.thumbnail?.url || "/placeholder.svg";
+  const thumbnailAlt = post.thumbnail?.alternativeText || "Blog Thumbnail";
 
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
@@ -40,7 +75,10 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
 
       <article className="py-12">
         <div className="max-w-7xl mx-auto px-6">
-          <Link href="/blog" className="flex items-center gap-2 text-purple-400 hover:text-purple-300 mb-8 transition">
+          <Link
+            href="/blog"
+            className="flex items-center gap-2 text-purple-400 hover:text-purple-300 mb-8 transition"
+          >
             <ArrowLeft size={20} />
             Back to Blog
           </Link>
@@ -51,8 +89,8 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
               <header className="mb-12">
                 <h1 className="text-3xl font-bold text-white mb-4">{post.title}</h1>
                 <Image
-                  src={`http://212.38.95.69:1397${post.thumbnail?.formats?.large?.url || post.thumbnail?.url}`}
-                  alt={post.thumbnail.alternativeText}
+                  src={`http://212.38.95.69:1397${thumbnailUrl}`}
+                  alt={thumbnailAlt}
                   width={1200}
                   height={600}
                   className="w-full h-auto rounded-xl shadow-2xl shadow-purple-600/20 border border-white/10 object-cover mb-4"
@@ -74,13 +112,12 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
               </header>
 
               <div className="prose prose-invert max-w-none text-gray-300 leading-8 mb-8">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {post.descrption}
-                </ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.descrption}</ReactMarkdown>
               </div>
+
               {/* Tags */}
               <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-2">
-                {post.tags?.map((t: any, i: number) => (
+                {post.tags?.map((t, i) => (
                   <span
                     key={i}
                     className="px-3 py-1 bg-purple-600/20 border border-purple-600/50 text-purple-300 text-sm rounded-full"
@@ -123,5 +160,5 @@ export default async function BlogDetail({ params }: { params: { slug: string } 
 
       <Footer />
     </div>
-  )
+  );
 }

@@ -6,13 +6,12 @@ import { FaGithub, FaLinkedinIn, FaWhatsapp, FaYoutube, FaDownload, FaPaperPlane
 
 export default function Main() {
   return (
-    <section className="relative flex flex-col justify-center items-center text-center w-full bg-slate-950 text-white min-h-screen p-20" >
-      <div className="absolute w-[600px] h-[600px] bg-purple-700/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+    <section className="relative flex flex-col justify-center items-center text-center bg-slate-950 text-white pt-30 md:pt-55" >
 
       {/* Content */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 max-w-6xl px-4 md:px-0" >
         <motion.h2
-          className="text-2xl md:text-2xl leading-tight mb-5"
+          className="text-lg md:text-xl lg:text-xl leading-tight mb-10"
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -22,22 +21,22 @@ export default function Main() {
 
         {/* Animated Title */}
         <motion.h1
-          className="text-2xl md:text-5xl font-bold  mb-8"
+          className="text-xl md:text-2xl lg:text-3xl mb-8 font-bold"
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          Software Engineer  (Full Stack + DevOps)
+          Software Developer Building Scalable, Cloud-Driven & AI-Powered Web Solutions
         </motion.h1>
 
         {/* Description */}
         <motion.p
-          className="text-gray-300 text-sm md:text-lg mx-auto mb-10"
+          className="text-gray-300 text-sm md:text-md lg:text-lg mb-10 "
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.8 }}
         >
-          I’m <span className="text-purple-400 font-semibold">Ahad Ali</span>, a developer passionate about building
+          {/* I’m <span className="text-purple-400 font-semibold">Ahad Ali</span>, a developer passionate about building
           <span className="text-purple-400 font-semibold">AI-driven web applications</span> that are clean, scalable,
           and cloud-ready. With expertise in
           <span className="text-purple-400 font-semibold">Full Stack Development</span> and
@@ -45,8 +44,14 @@ export default function Main() {
           I design systems that deploy seamlessly and scale efficiently.
           My focus is on merging
           <span className="text-purple-400 font-semibold"> AI, innovation, and reliability</span>
-          to craft intelligent products that empower users and drive real impact.
+          to craft intelligent products that empower users and drive real impact. */}
 
+          I'm Ahad Ali, a passionate software developer building scalable, cloud-driven, and AI-powered web solutions.
+          With expertise in full-stack development and DevOps, I design applications that deliver speed, reliability, and intelligent performance.
+          I combine clean architecture with modern cloud technologies like Docker, AWS, and CI/CD to create seamless digital experiences.
+          <br></br>
+          <br></br>
+          Let's build something innovative, efficient, and ready for the future.
         </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-5" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}>

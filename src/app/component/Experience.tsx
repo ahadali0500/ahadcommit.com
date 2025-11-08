@@ -2,15 +2,17 @@
 import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 type Item = {
   title: string;
-  company: string;      // issuer/school/company
+  company: string;
   logo?: string;
   link?: string;
   description?: string;
   location?: string;
-  period?: string;      // dates or validity
+  period?: string;
 };
 
 function ReadMoreText({ text = "", maxLength = 250 }: { text?: string; maxLength?: number }) {
@@ -29,13 +31,11 @@ function ReadMoreText({ text = "", maxLength = 250 }: { text?: string; maxLength
   );
 }
 
-/** Simple tab button */
 function TabButton({ value, active, onClick, children }: any) {
   return (
     <button
       type="button"
       onClick={() => onClick(value)}
-
       className={`px-3 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 shrink-0 whitespace-nowrap snap-center ${active
         ? "bg-purple-600 text-white shadow"
         : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
@@ -48,13 +48,16 @@ function TabButton({ value, active, onClick, children }: any) {
   );
 }
 
-
-/** Reusable card */
-function TimelineCard({ item }: { item: Item }) {
+function TimelineCard({ item, index }: { item: Item; index: number }) {
   return (
-    <div className="relative bg-white/5 border border-white/10 p-4 rounded-xl">
-      <h1 className="text-lg md:text-lg font-bold text-white">{item.title}</h1>
-
+    <motion.div
+      className="relative bg-white/5 border border-white/10 p-4 rounded-xl hover:bg-white/10 transition-colors duration-300"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
+      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+    >
+      <h2 className="text-lg md:text-xl lg:text-xl text-white">{item.title}</h2>
       <div className="flex items-center gap-3 my-3">
         <img
           src={item?.logo || "/placeholder.svg"}
@@ -68,150 +71,133 @@ function TimelineCard({ item }: { item: Item }) {
           </Link>
         ) : null}
       </div>
-
-      {item.description ? (
+      {item.description && (
         <p className="text-gray-300 text-sm md:text-md mb-2">
           <ReadMoreText text={item.description} maxLength={250} />
         </p>
-      ) : null}
-
-      {item.location ? <div className="text-gray-400 text-xs">{item.location}</div> : null}
-      {item.period ? <div className="text-purple-500 text-sm md:text-md font-semibold mt-2">{item.period}</div> : null}
-    </div>
+      )}
+      {item.location && <div className="text-gray-400 text-xs">{item.location}</div>}
+      {item.period && <div className="text-purple-500 text-sm md:text-md font-semibold mt-2">{item.period}</div>}
+    </motion.div>
   );
 }
 
+function Section({ title, items, icon }: { title: string; items?: Item[]; icon: string }) {
+  if (!items || !items.length)
+    return <p className="text-gray-400">No {title.toLowerCase()} added yet.</p>;
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="text-3xl">{icon}</div>
+        <h2 className="text-lg md:text-xl lg:text-2xl text-white">{title}</h2>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {items.map((item, idx) => (
+          <TimelineCard key={`${title}-${idx}`} item={item} index={idx} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Experience({
   educationExperience = [],
   workExperience = [],
   certifications = [],
+  active = "all"
 }: {
   educationExperience?: Item[];
   workExperience?: Item[];
   certifications?: Item[];
+  active?: "all" | "experience" | "education" | "certifications"
 }) {
-  const [tab, setTab] = useState<"all" | "experience" | "education" | "certifications">("all");
+  const pathname = usePathname();
+  const [tab, setTab] = useState<"all" | "experience" | "education" | "certifications">(active);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  }
 
   return (
-    <div className="bg-slate-950 text-white py-20">
-      <div className="max-w-6xl mx-auto px-4 md:px-6 mt-10 md:mt-20">
-        <div className="text-center mb-5 md:mb-6">
-          <h1 className="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-4">Experience & Education</h1>
-          <p className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto">
-            My professional journey, academic background, and certifications.
-          </p>
-        </div>
+    <div className="bg-slate-950 text-white pt-20">
+      <div className={`max-w-6xl mx-auto px-4 md:px-6 ${pathname == "/" ? 'mt-0 md:mt-20' : 'mt-10 md:mt-20'} `}>
+        {/* Header */}
+        <motion.div
+          className="text-center mb-5 md:mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
 
-        <div
+          {pathname == "/" ?
+            <motion.h2
+              className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4"
+              variants={itemVariants}
+            >
+              Professional Experience
+            </motion.h2>
+            :
+            <motion.h1
+              className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4"
+              variants={itemVariants}
+            >
+              Professional Experience & Technical Journey and Certifications
+            </motion.h1>
+          }
+
+          <motion.p
+            className="text-gray-300 text-sm md:text-md lg:text-lg"
+            variants={itemVariants}
+          >            Over the years, I've worked as a software developer focused on building scalable web platforms
+            and automating deployment workflows. My experience spans full-stack development, cloud
+            infrastructure, and intelligent system design that blends performance with reliability.
+          </motion.p>
+        </motion.div>
+
+        {/* Tabs */}
+        <motion.div
           className="no-scrollbar flex flex-nowrap justify-center overflow-x-auto snap-x snap-mandatory gap-1 md:gap-2 mb-10 md:mb-10 -mx-4 px-4 w-full"
           role="tablist"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <TabButton value="all" active={tab === "all"} onClick={(v: any) => setTab(v as any)}>All</TabButton>
-          <TabButton value="experience" active={tab === "experience"} onClick={(v: any) => setTab(v as any)}>Experience</TabButton>
-          <TabButton value="education" active={tab === "education"} onClick={(v: any) => setTab(v as any)}>Education</TabButton>
-          <TabButton value="certifications" active={tab === "certifications"} onClick={(v: any) => setTab(v as any)}>Certifications</TabButton>
-        </div>
+          <TabButton value="all" active={tab === "all"} onClick={(v: any) => setTab(v)}>All</TabButton>
+          <TabButton value="experience" active={tab === "experience"} onClick={(v: any) => setTab(v)}>Experience</TabButton>
+          <TabButton value="education" active={tab === "education"} onClick={(v: any) => setTab(v)}>Education</TabButton>
+          <TabButton value="certifications" active={tab === "certifications"} onClick={(v: any) => setTab(v)}>Certifications</TabButton>
+        </motion.div>
 
-        {tab === "all" && (
-          <div className="space-y-12">
-            {/* Work */}
-            <section>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="text-3xl">💼</div>
-                <h2 className="text-xl md:text-2xl font-bold text-white">Work Experience</h2>
-              </div>
-              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
-                {workExperience?.length ? (
-                  workExperience.map((exp, idx) => <TimelineCard key={`work-${idx}`} item={exp} />)
-                ) : (
-                  <p className="text-gray-400">No work experience added yet.</p>
-                )}
-              </div>
-            </section>
-
-            {/* Education */}
-            <section>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="text-3xl">🎓</div>
-                <h2 className="text-xl md:text-2xl font-bold text-white">Education</h2>
-              </div>
-              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
-                {educationExperience?.length ? (
-                  educationExperience.map((edu, idx) => <TimelineCard key={`edu-${idx}`} item={edu} />)
-                ) : (
-                  <p className="text-gray-400">No education added yet.</p>
-                )}
-              </div>
-            </section>
-
-            {/* Certifications */}
-            <section>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="text-3xl">📜</div>
-                <h2 className="text-xl md:text-2xl font-bold text-white">Certifications</h2>
-              </div>
-              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
-                {certifications?.length ? (
-                  certifications.map((cert, idx) => <TimelineCard key={`cert-${idx}`} item={cert} />)
-                ) : (
-                  <p className="text-gray-400">No certifications added yet.</p>
-                )}
-              </div>
-            </section>
-          </div>
-        )}
-
-        {/* EXPERIENCE ONLY */}
-        {tab === "experience" && (
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="text-3xl">💼</div>
-              <h2 className="text-xl md:text-2xl font-bold text-white">Work Experience</h2>
-            </div>
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
-              {workExperience?.length ? (
-                workExperience.map((exp, idx) => <TimelineCard key={`work-only-${idx}`} item={exp} />)
-              ) : (
-                <p className="text-gray-400">No work experience added yet.</p>
+        {/* Tab Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tab} // animate container on tab switch
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className="space-y-12">
+              {tab === "all" && (
+                <>
+                  <Section title="Work Experience" items={workExperience} icon="💼" />
+                  <Section title="Education" items={educationExperience} icon="🎓" />
+                  <Section title="Certifications" items={certifications} icon="📜" />
+                </>
               )}
+              {tab === "experience" && <Section title="Work Experience" items={workExperience} icon="💼" />}
+              {tab === "education" && <Section title="Education" items={educationExperience} icon="🎓" />}
+              {tab === "certifications" && <Section title="Certifications" items={certifications} icon="📜" />}
             </div>
-          </div>
-        )}
-
-        {/* EDUCATION ONLY */}
-        {tab === "education" && (
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="text-3xl">🎓</div>
-              <h2 className="text-xl md:text-2xl font-bold text-white">Education</h2>
-            </div>
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
-              {educationExperience?.length ? (
-                educationExperience.map((edu, idx) => <TimelineCard key={`edu-only-${idx}`} item={edu} />)
-              ) : (
-                <p className="text-gray-400">No education added yet.</p>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* CERTIFICATIONS ONLY */}
-        {tab === "certifications" && (
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="text-3xl">📜</div>
-              <h2 className="text-xl md:text-2xl font-bold text-white">Certifications</h2>
-            </div>
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6">
-              {certifications?.length ? (
-                certifications.map((cert, idx) => <TimelineCard key={`cert-only-${idx}`} item={cert} />)
-              ) : (
-                <p className="text-gray-400">No certifications added yet.</p>
-              )}
-            </div>
-          </div>
-        )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
