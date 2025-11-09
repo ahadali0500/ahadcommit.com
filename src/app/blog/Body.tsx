@@ -122,10 +122,10 @@ export default function Body() {
                                 Tech Insights & AI Stories
                             </span>
                         </div>
-                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                        <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">
                             Tech Insights, Tutorials & Dev Stories
                         </h1>
-                        <p className="text-gray-300 text-sm md:text-lg">
+                        <p className="text-gray-300 text-sm md:text-md lg:text-lg">
                             Welcome to my blog where I share lessons, experiments, and insights from my journey
                             as a software developer.
                         </p>
