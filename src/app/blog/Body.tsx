@@ -7,8 +7,8 @@ import { Search, ChevronLeft, ChevronRight, Sparkles } from "lucide-react"
 
 
 const POSTS_PER_PAGE = 3
-const API_URL = "http://212.38.95.69:1397/api/blogs?populate=*"
-const TOKEN = `Bearer d1030419c17fe827ac35ab902188dd6675a8cbdab2fc381fc5d062e31f152b532996c7cfdb61fc137bf5e0ee2b83d6b755082064f2628254dc1292f8d5398098335927d92160226539a730695447ae904c995776cfa929cbf44cb5ec6461c0913587acc7ef03f2979b3315efb01932872928b3b5d78889c6ff9cfb1e4bde2f51`
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api/blogs?populate=*`;
+const TOKEN = `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
 
 interface ImageFormat {
     url: string
