@@ -65,7 +65,11 @@ async function getRelatedPosts(category: string, excludeSlug: string): Promise<B
 }
 
 // ✨ Single Page Component
-export default async function BlogDetail({ params }: { params: { slug: string } }) {
+export default async function BlogDetail({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params;
 
   const post = await getBlog(slug);
@@ -252,9 +256,12 @@ function SocialLink({ href, icon }: any) {
 
 import { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({   params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const token = process.env.NEXT_PUBLIC_TOKEN;
-  const {slug} = await params;
+  const { slug } = await params;
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/blogs?filters[slug][$eq]=${slug}&populate=*`,
