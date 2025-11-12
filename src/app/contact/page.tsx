@@ -5,6 +5,29 @@ import Project from "../component/Project";
 import Contact from "../component/Contact";
 import Experience from '../component/Experience';
 
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ahad Ali",
+  "url": "https://ahadcommit.com",
+  "logo": "https://ahadcommit.com/assets/img/Ahad Ali Software Developer.jpg",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+92 325 6234131",
+      "contactType": "WhatsApp / General Inquiries",
+      "areaServed": "PK",
+      "availableLanguage": ["English"]
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "ahadcommit@gmail.com",
+      "contactType": "Email",
+      "availableLanguage": ["English"]
+    }
+  ]
+}
+
 export const metadata = {
   title: {
     default: "Get in Touch with Ahad Ali — Software Developer & DevOps Expert",
@@ -22,7 +45,10 @@ export const metadata = {
     siteName: "Ahad Commit",
     locale: "en_US",
     type: "website"
-  }
+  },
+  other: {
+    "application/ld+json": JSON.stringify(schemaData),
+  },
 };
 
 export default function page() {
