@@ -244,9 +244,9 @@ export default function Body() {
                                                             </div>
                                                         </div>
                                                         <div className="p-6 flex flex-col flex-1">
-                                                            <h3 className="text-lg font-bold text-white mb-2 line-clamp-2">
+                                                            <h2 className="text-lg font-bold text-white mb-2 line-clamp-2">
                                                                 {post.title}
-                                                            </h3>
+                                                            </h2>
                                                             <p className="text-gray-300 text-sm mb-4 line-clamp-2 flex-1">
                                                                 {post.smallDescription}
                                                             </p>

@@ -8,11 +8,14 @@ export const metadata = {
         template: "%s | Ahad Ali"
     },
     description: "Explore articles by Ahad Ali, a software developer sharing real-world insights on web development, cloud systems, automation, and modern tech innovation.",
-    metadataBase: new URL("https://ahadcommit.com/contact"),
+    alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_URL}/blog`,
+    },
+    metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}/blog`),
     openGraph: {
         title: "Tech Insights, Tutorials & Dev Stories — Ahad Ali",
         description: "Explore articles by Ahad Ali, a software developer sharing real-world insights on web development, cloud systems, automation, and modern tech innovation.",
-        url: "https://ahadcommit.com/contact",
+        url: `${process.env.NEXT_PUBLIC_URL}/blog`,
         siteName: "Ahad Commit",
         locale: "en_US",
         type: "website"

@@ -57,14 +57,14 @@ function TimelineCard({ item, index }: { item: Item; index: number }) {
       transition={{ duration: 0.4, delay: index * 0.08 }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
-      <h2 className="text-lg md:text-xl lg:text-xl text-white">{item.title}</h2>
+      <h3 className="text-lg md:text-xl lg:text-xl text-white">{item.title}</h3>
       <div className="flex items-center gap-3 my-3">
         <img
           src={item?.logo || "/placeholder.svg"}
           alt={`${item.company} logo`}
           className="w-12 h-12 object-contain rounded-md bg-white p-1"
         />
-        <div className="font-semibold text-md md:text-md text-white">{item.company}</div>
+        <h4 className="font-semibold text-md md:text-md text-white">{item.company}</h4>
         {item.link ? (
           <Link target="_blank" href={item.link} className="text-purple-500 hover:text-purple-400" aria-label="External link">
             <ExternalLink size={16} />

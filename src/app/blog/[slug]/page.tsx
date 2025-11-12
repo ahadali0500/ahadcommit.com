@@ -14,7 +14,7 @@ import "highlight.js/styles/github-dark.css";
 interface BlogThumbnail {
   url: string;
   alternativeText?: string;
-  formats?: { large?: { url: string } };
+  formats?: Record<string, { url: string } | undefined>;
 }
 
 interface BlogTag {
@@ -110,9 +110,10 @@ export default async function BlogDetail({
   const relatedPosts = post.category?.title
     ? await getRelatedPosts(post.category.title, post.slug)
     : [];
+  console.log(post);
 
-  const thumbnailUrl = post.thumbnail?.formats?.large?.url || post.thumbnail?.url || "/placeholder.svg";
-  const shareUrl = `${process.env.NEXT_PUBLIC_API_URL}/blog/${post.slug}`;
+  const thumbnailUrl = post.thumbnail?.url || "/placeholder.svg";
+  const shareUrl = `${process.env.NEXT_PUBLIC_URL}/blog/${post.slug}`;
 
   // Extract headings for table of contents
   const headings = extractHeadings(post.descrption);
@@ -310,12 +311,10 @@ export default async function BlogDetail({
                 </div>
               </div>
 
-              <Image
+              <img
                 src={`${process.env.NEXT_PUBLIC_API_URL}${thumbnailUrl}`}
                 alt={post.thumbnail?.alternativeText || post.title}
-                width={1200}
-                height={600}
-                className="w-full h-auto rounded-xl shadow-2xl shadow-purple-600/20 border border-white/10 object-cover"
+                className="rounded-xl shadow-2xl shadow-purple-600/20 border border-white/10 object-cover"
               />
             </header>
 
@@ -407,7 +406,7 @@ export default async function BlogDetail({
 
               {/* Author Card */}
               <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-white mb-4">About Author</h3>
+                <h2 className="text-lg font-bold text-white mb-4">About Author</h2>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                     <Image
@@ -419,8 +418,8 @@ export default async function BlogDetail({
                     />
                   </div>
                   <div>
-                    <p className="font-semibold text-white">Ahad Ali</p>
-                    <p className="text-sm text-gray-400">Software Developer | DevOps Engineer</p>
+                    <h3 className="font-semibold text-white">Ahad Ali</h3>
+                    <h4 className="text-sm text-gray-400">Software Developer | DevOps Engineer</h4>
                   </div>
                 </div>
 
@@ -447,7 +446,7 @@ export default async function BlogDetail({
               {/* Related Articles */}
               {relatedPosts.length > 0 && (
                 <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl p-6 sticky top-[calc(100px+1rem)]">
-                  <h3 className="text-lg font-bold text-white mb-4">Related Articles</h3>
+                  <h2 className="text-lg font-bold text-white mb-4">Related Articles</h2>
                   <div className="space-y-4">
                     {relatedPosts.map((r) => {
                       const rThumb = r.thumbnail?.formats?.large?.url || r.thumbnail?.url || "/placeholder.svg";
@@ -467,9 +466,9 @@ export default async function BlogDetail({
                             />
                           </div>
                           <div>
-                            <h4 className="text-sm font-semibold text-white line-clamp-2 group-hover:text-purple-400">
+                            <h3 className="text-sm font-semibold text-white line-clamp-2 group-hover:text-purple-400">
                               {r.title}
-                            </h4>
+                            </h3>
                             <p className="text-xs text-gray-400 mt-1">
                               {new Date(r.createdAt).toLocaleDateString()}
                             </p>
@@ -480,7 +479,7 @@ export default async function BlogDetail({
                   </div>
                 </div>
               )}
-              </div>
+            </div>
           </aside>
         </div>
       </article>
@@ -534,7 +533,7 @@ export async function generateMetadata({
   }
 
   const thumbnailUrl = post.thumbnail?.formats?.large?.url || post.thumbnail?.url || "/placeholder.svg";
-  const shareUrl = `${process.env.NEXT_PUBLIC_API_URL}/blog/${post.slug}`;
+  const shareUrl = `${process.env.NEXT_PUBLIC_URL}/blog/${post.slug}`;
   const keywords = post.tags?.map((t: { slug: string }) => t.slug).join(", ") || "blog, article, software, devops";
 
   const cleanDescription = post.descrption

@@ -11,11 +11,14 @@ export const metadata = {
     template: "%s | Ahad Ali"
   },
   description: "Explore projects by Ahad Ali, a software developer crafting scalable, AI-enhanced, and cloud-ready web applications built for speed, reliability, and growth.",
-  metadataBase: new URL("https://ahadcommit.com/project"),
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_URL}/projects`,
+  },
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}/projects`),
   openGraph: {
     title: "Scalable & Cloud-Ready Web Projects — Ahad Ali",
     description: "Explore projects by Ahad Ali, a software developer crafting scalable, AI-enhanced, and cloud-ready web applications built for speed, reliability, and growth.",
-    url: "https://ahadcommit.com/project",
+    url: `${process.env.NEXT_PUBLIC_URL}/projects`,
     siteName: "Ahad Commit",
     locale: "en_US",
     type: "website"

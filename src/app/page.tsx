@@ -11,6 +11,7 @@ import type { Metadata } from "next";
 import { educationExperience, workExperience } from '@/app/data/experience'
 import ReviewsSection from "./component/ReviewsSection";
 import Aboutus from "./component/Aboutus";
+import VideoPlayer from "./component/VideoPlayer";
 
 export const metadata = {
   title: {
@@ -18,11 +19,14 @@ export const metadata = {
     template: "%s | Ahad Ali"
   },
   description: "Ahad Ali is a software developer specializing in full-stack web development, cloud deployment, and AI-powered automation. He builds scalable, high-performance web apps with DevOps practices and intelligent features that drive modern digital growth.",
-  metadataBase: new URL("https://ahadcommit.com/"),
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_URL}`,
+  },
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}`),
   openGraph: {
     title: "Ahad Ali — Software Developer | Cloud & AI-Powered Web Solutions Expert",
     description: "Ahad Ali is a software developer specializing in full-stack web development, cloud deployment, and AI-powered automation. He builds scalable, high-performance web apps with DevOps practices and intelligent features that drive modern digital growth.",
-    url: "https://ahadcommit.com",
+    url: `${process.env.NEXT_PUBLIC_URL}`,
     siteName: "Ahad Commit",
     locale: "en_US",
     type: "website"

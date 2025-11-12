@@ -13,11 +13,14 @@ export const metadata = {
     template: "%s | Ahad Ali"
   },
   description: "Explore Ahad Ali’s experience and certifications as a software developer skilled in full-stack development, cloud automation, and scalable web systems.",
-  metadataBase: new URL("https://ahadcommit.com/experience"),
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_URL}/experience`,
+  },
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}/experience`),
   openGraph: {
     title: "Experience & Certifications — Ahad Ali",
     description: "Explore Ahad Ali’s experience and certifications as a software developer skilled in full-stack development, cloud automation, and scalable web systems.",
-    url: "https://ahadcommit.com/experience",
+    url: `${process.env.NEXT_PUBLIC_URL}/experience`,
     siteName: "Ahad Commit",
     locale: "en_US",
     type: "website"

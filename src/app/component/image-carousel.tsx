@@ -40,7 +40,7 @@ export default function ImageCarousel({ images, autoSlideInterval = 3000, onImag
   }
 
   return (
-    <div className="relative w-full h-64  bg-white/5 border border-white/10 rounded-lg overflow-hidden group">
+    <div className="relative w-full h-64  bg-white/5 border border-white/10 rounded-t-lg overflow-hidden group">
       {/* Image Display */}
       <div className="relative w-full h-full">
         {images.map((image, index) => (
@@ -73,7 +73,7 @@ export default function ImageCarousel({ images, autoSlideInterval = 3000, onImag
       </button>
 
       {/* Indicators */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      {/* <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {images.map((_, index) => (
           <button
             key={index}
@@ -83,7 +83,7 @@ export default function ImageCarousel({ images, autoSlideInterval = 3000, onImag
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Image Counter */}
       <div className="absolute top-3 right-3 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-semibold">

@@ -11,11 +11,14 @@ export const metadata = {
     template: "%s | Ahad Ali"
   },
   description: "Key skills of Ahad Ali, a software developer skilled in full-stack development, cloud systems, and automation for scalable, high-performance apps.",
-  metadataBase: new URL("https://ahadcommit.com/skills"),
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_URL}/skills`,
+  },
+  metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL}/skills`),
   openGraph: {
     title: "Technical Skills & Core Expertise — Ahad Ali ",
     description: "Key skills of Ahad Ali, a software developer skilled in full-stack development, cloud systems, and automation for scalable, high-performance apps.",
-    url: "https://ahadcommit.com/skills",
+    url: `${process.env.NEXT_PUBLIC_URL}/skills`,
     siteName: "Ahad Commit",
     locale: "en_US",
     type: "website"

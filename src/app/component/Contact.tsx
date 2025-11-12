@@ -275,9 +275,9 @@ export default function Contact() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.h4 className="text-2xl font-bold text-white mb-4" variants={itemVariants}>
+              <motion.h2 className="text-2xl font-bold text-white mb-4" variants={itemVariants}>
                 Contact Details
-              </motion.h4>
+              </motion.h2>
               <motion.p className="text-gray-300 mb-8" variants={itemVariants}>
                 Reach out for web development, DevOps, or AI-based projects.
               </motion.p>
@@ -345,7 +345,7 @@ export default function Contact() {
 
               {/* Calendly CTA */}
               <motion.div className="mt-10" variants={itemVariants}>
-                <h6 className="text-white font-semibold mb-3">Prefer a quick chat?</h6>
+                <h3 className="text-white font-semibold mb-3">Prefer a quick chat?</h3>
                 <motion.a
                   href="https://calendly.com/ahadcommit/30min"
                   target="_blank"

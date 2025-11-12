@@ -23,8 +23,7 @@ function TabButton({
   children: React.ReactNode;
 }) {
   return (
-    <button
-      type="button"
+    <h2
       onClick={() => onClick(value)}
       className={[
         "shrink-0 whitespace-nowrap snap-center",
@@ -37,7 +36,7 @@ function TabButton({
       role="tab"
     >
       {children}
-    </button>
+    </h2>
   );
 }
 

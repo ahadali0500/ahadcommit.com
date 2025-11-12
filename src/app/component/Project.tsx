@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import Link from 'next/link';
 import { FaArrowCircleRight } from 'react-icons/fa';
 import ImageCarousel from "./image-carousel";
-
+// categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud", "AI / LLM Tools"],
 const cardData = [
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud", "AI / LLM Tools"],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113690/EM_01_Dashboard_nwabix.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113687/EM_03_Dashboard_huc0mb.svg" },
@@ -20,7 +20,7 @@ const cardData = [
     feature: true
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113676/Crypto_01_byufp5.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113679/Crypto_02_fgr4k4.svg" },
@@ -31,7 +31,7 @@ const cardData = [
     feature: true
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113704/Medipedia_01_3_pm3zz1.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113710/Medipedia_01_5_qo2pck.svg" },
@@ -44,7 +44,7 @@ const cardData = [
     website: "https://www.skillalfa.com"
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113701/Medipedia_01_2_y7u92p.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113776/Medipedia_01_fc4khz.svg" },
@@ -59,7 +59,7 @@ const cardData = [
 
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113747/Medipedia_01_14_eztp2y.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113753/Medipedia_01_16_kgcejo.svg" },
@@ -84,7 +84,7 @@ const cardData = [
     website: "https://job-tech.vercel.app/"
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113757/Medipedia_01_20_jf9vm8.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113773/Medipedia_01_21_bpq4bz.svg" },
@@ -93,7 +93,7 @@ const cardData = [
     description: "BinSadiq & MCP Real Estate is a single-page website built with Bootstrap and PHP for showcasing pre-rented property sales in Pakistan. Designed as a digital marketing landing page, it targets the local market to generate high-quality real estate leads.",
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113728/Medipedia_01_8_irjlrf.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113723/Medipedia_01_9_taliss.svg" },
@@ -106,7 +106,7 @@ const cardData = [
     website: "https://majesticgb.com/"
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113773/Medipedia_01_24_s08uy3.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113771/Medipedia_01_25_blrbvj.svg" },
@@ -119,7 +119,7 @@ const cardData = [
     website: "https://interactimmigration.com"
   },
   {
-    categories: ["Backend / API projects", "Full-Stack projects", "DevOps & Cloud",],
+    categories: ["Full-Stack projects"],
     images: [
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113735/Medipedia_01_10_wcy24r.svg" },
       { type: 'image', src: "https://res.cloudinary.com/deqfevfja/image/upload/v1754113728/Medipedia_01_11_cq6hyn.svg" },
@@ -316,9 +316,11 @@ export default function Project({ title = "Recent Projects", page = 'project' }:
                 </div>
               </div>
 
-              <div className="p-4">
-                <h6 className="text-lg font-bold text-white mb-2">{card.title}</h6>
-                <p className="text-gray-300 text-sm md:text-md">{card.description}</p>
+              <div className="p-3">
+                <h3 className='text-[10px] bg-purple-600 text-white shadow rounded-full p-1 inline-block' >{card.categories}</h3>
+                <h2 className='text-lg mt-2'>{card.title}</h2>
+                <h4 className='text-xs mt-2' ><b>Technologies:</b> Node.js, Laravel, React, Next.js</h4>
+                <p className="text-gray-300 text-[13px] mt-3">{card.description}</p>
               </div>
             </motion.div>
           ))}
