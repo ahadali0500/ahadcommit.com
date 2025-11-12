@@ -89,7 +89,6 @@ export default function page() {
   return (
     <div>
       <Head>
-        {/* Inject structured data */}
         {combinedSchema.map((schema, idx) => (
           <script key={idx} type="application/ld+json">
             {JSON.stringify(schema)}
