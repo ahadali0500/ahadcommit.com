@@ -11,7 +11,6 @@ import type { Metadata } from "next";
 import { educationExperience, workExperience } from '@/app/data/experience'
 import ReviewsSection from "./component/ReviewsSection";
 import Aboutus from "./component/Aboutus";
-import VideoPlayer from "./component/VideoPlayer";
 
 const schemaData = {
   "@context": "https://schema.org",
