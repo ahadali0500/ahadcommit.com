@@ -16,14 +16,8 @@ export default function Custom404() {
       <h1 style={{ fontSize: '80px', marginBottom: '20px' }}>404</h1>
       <p style={{ fontSize: '24px', marginBottom: '10px' }}>Oops! Page Not Found</p>
       <p style={{ marginBottom: '30px' }}>The page you’re looking for doesn’t exist.</p>
-      <Link href="/" style={{
-        backgroundColor: 'white',
-        color: 'var(--tj-theme-accent-1)',
-        padding: '10px 20px',
-        textDecoration: 'none',
-        borderRadius: '6px',
-        fontWeight: 'bold'
-      }}>
+      <Link href="/" className="bg-gradient-to-r from-purple-600 to-purple-700 text-white font-bold py-3 rounded-lg hover:shadow-lg transition disabled:opacity-50 w-48 text-center"
+      >
         Go to Homepage
       </Link>
     </div>

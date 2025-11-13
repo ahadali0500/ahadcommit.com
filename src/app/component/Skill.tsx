@@ -47,28 +47,38 @@ export default function Skill() {
   const allSkills: SkillType[] = [
     { name: "HTML", icon: "assets/img/skill/html-5.png", category: "Frontend" },
     { name: "CSS", icon: "assets/img/skill/css.png", category: "Frontend" },
-    { name: "JavaScript", icon: "assets/img/skill/js.png", category: "Frontend" },
+    { name: "JavaScript", icon: "assets/img/skill/javaScript.png", category: "Frontend" },
     { name: "React.js", icon: "assets/img/skill/react.png", category: "Frontend" },
     { name: "Next.js", icon: "assets/img/skill/next.png", category: "Frontend" },
     { name: "Bootstrap", icon: "assets/img/skill/bootstrap.png", category: "Frontend" },
     { name: "JQuery", icon: "assets/img/skill/jquery.png", category: "Frontend" },
+    { name: "Tailwind", icon: "assets/img/skill/tailwind.png", category: "Frontend" },
+    { name: "Redux", icon: "assets/img/skill/redux.png", category: "Frontend" },
+
     { name: "PHP", icon: "assets/img/skill/php.png", category: "Backend" },
     { name: "Laravel", icon: "assets/img/skill/laravel.png", category: "Backend" },
     { name: "Node.js", icon: "assets/img/skill/node.png", category: "Backend" },
     { name: "Express.js", icon: "assets/img/skill/express-js.png", category: "Backend" },
+    { name: "Python", icon: "assets/img/skill/python.png", category: "Backend" },
+    { name: "FastApi", icon: "assets/img/skill/fastapi.png", category: "Backend" },
     { name: "MySQL", icon: "assets/img/skill/mysql.png", category: "Backend" },
-    { name: "PostgreSQL", icon: "assets/img/skill/postgres.png", category: "Backend" },
+    { name: "PostgreSQL", icon: "assets/img/skill/postgresql.jpg", category: "Backend" },
     { name: "Postman", icon: "assets/img/skill/postman.png", category: "Backend" },
+
     { name: "GitHub", icon: "assets/img/skill/github.png", category: "DevOps" },
     { name: "Docker", icon: "assets/img/skill/docker.png", category: "DevOps" },
-    { name: "Kubernetes", icon: "assets/img/skill/kubernetes.png", category: "DevOps" },
+    { name: "Kubernetes", icon: "assets/img/skill/kuburnetes.png", category: "DevOps" },
     { name: "Terraform", icon: "assets/img/skill/terraform.png", category: "DevOps" },
     { name: "Jenkins", icon: "assets/img/skill/jenkins.png", category: "DevOps" },
     { name: "AWS", icon: "assets/img/skill/aws-png.png", category: "DevOps" },
     { name: "Bitbucket", icon: "assets/img/skill/bitbucket-logo.WEBP", category: "DevOps" },
+
     { name: "LangChain", icon: "assets/img/skill/langchain.png", category: "AI Integrations" },
+    { name: "Gemini", icon: "assets/img/skill/gemini.png", category: "AI Integrations" },
     { name: "OpenAI API", icon: "assets/img/skill/openai.png", category: "AI Integrations" },
     { name: "LLM Integration", icon: "assets/img/skill/llm.png", category: "AI Integrations" },
+    { name: "Chatbot (RAG)", icon: "assets/img/skill/chatbot.png", category: "AI Integrations" },
+
   ];
 
   const visibleSkills =

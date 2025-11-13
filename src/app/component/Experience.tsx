@@ -61,7 +61,7 @@ function TimelineCard({ item, index }: { item: Item; index: number }) {
       <div className="flex items-center gap-3 my-3">
         <img
           src={item?.logo || "/placeholder.svg"}
-          alt={`${item.company} logo`}
+          alt={`${item.company}`}
           className="w-12 h-12 object-contain rounded-md bg-white p-1"
         />
         <h4 className="font-semibold text-md md:text-md text-white">{item.company}</h4>

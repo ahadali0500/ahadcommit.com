@@ -411,7 +411,7 @@ export default async function BlogDetail({
                   <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                     <Image
                       src="/assets/img/Ahad Ali Software Developer.jpg"
-                      alt="Ahad Ali"
+                      alt="Ahad Ali Software Developer | Cloud & AI-Powered Web Solutions Expert"
                       width={64}
                       height={64}
                       className="object-cover w-full h-full"
@@ -459,7 +459,7 @@ export default async function BlogDetail({
                           <div className="w-20 h-16 rounded-lg overflow-hidden flex-shrink-0">
                             <Image
                               src={`${process.env.NEXT_PUBLIC_API_URL}${rThumb}`}
-                              alt={r.title}
+                              alt={post.thumbnail?.alternativeText || post.title}
                               width={80}
                               height={60}
                               className="object-cover w-full h-full"

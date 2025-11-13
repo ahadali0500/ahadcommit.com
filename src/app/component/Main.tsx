@@ -6,7 +6,7 @@ import { FaGithub, FaLinkedinIn, FaWhatsapp, FaYoutube, FaDownload, FaPaperPlane
 
 export default function Main() {
   return (
-    <section className="relative flex flex-col justify-center items-center text-center bg-slate-950 text-white pt-30 md:pt-55" >
+    <section className="relative flex flex-col justify-center items-center text-center bg-slate-950 text-white pt-30 md:pt-42" >
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl px-4 md:px-0" >
