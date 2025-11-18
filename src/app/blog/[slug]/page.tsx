@@ -35,6 +35,7 @@ interface BlogPost {
   readTime: number;
   tags?: BlogTag[];
   category?: BlogCategory;
+  youtubeVideoId?: string;
 }
 
 // 🪣 Fetchers
@@ -317,7 +318,9 @@ export default async function BlogDetail({
                 className="rounded-xl shadow-2xl shadow-purple-600/20 border border-white/10 object-cover"
               />
             </header>
-
+            {post.youtubeVideoId && (
+              <FloatingYouTube videoUrl="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" position="right" />
+            )}
             {/* Main Content */}
             <div className="markdown-body">
               <ReactMarkdown
@@ -504,6 +507,8 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
 
 // Metadata generation
 import { Metadata } from "next";
+import YouTubeEmbed from "@/app/component/YouTubeEmbed";
+import FloatingYouTube from "@/app/component/FloatingYouTube";
 
 export async function generateMetadata({
   params,
