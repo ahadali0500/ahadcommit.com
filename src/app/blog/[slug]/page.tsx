@@ -319,7 +319,7 @@ export default async function BlogDetail({
               />
             </header>
             {post.youtubeVideoId && (
-              <FloatingYouTube videoUrl="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" position="right" />
+              <FloatingYouTube videoUrl={`https://www.youtube.com/watch?v=${post.youtubeVideoId}`} position="right" />
             )}
             {/* Main Content */}
             <div className="markdown-body">
