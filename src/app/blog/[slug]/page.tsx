@@ -73,7 +73,7 @@ async function getRelatedPosts(category: string, excludeSlug: string): Promise<B
 
 // Helper function to extract headings from markdown
 function extractHeadings(markdown: string) {
-  const headingRegex = /^(#{1,3})\s+(.+)$/gm;
+  const headingRegex = /^(#{1,2})\s+(.+)$/gm;
   const headings = [];
   let match;
 
